@@ -89,7 +89,7 @@ ul li a:hover{
     width: 380px;
 }
 .add-module h1{
-    font-size: 25px;
+    font-size: 20px;
     color: white;
     padding-top: 15px;
     padding-bottom: 10px;
@@ -125,7 +125,7 @@ input[type="time"]{
 }
 .form-check{
     display: inline-flex;
-    font-size: 12px;
+    font-size: 10px;
     margin-left: 50px;
     margin: 3px;
 }
@@ -151,16 +151,18 @@ button[type="button"]{
     width: 50px;
     outline: none;
     border: none;
-    top: 350px;
-    margin-left: 140px;
+    top: 405px;
+    margin-left: 200px;
 }
 .flex-center button{
     text-align: center;
-    font-size: 12px;
+    font-size: 10px;
+    margin-top: -35px;
 }
 .flex-center label{
-    margin-top: 7px;
+    margin-top: 2px;
     font-size: 15px;
+
     top: 90px;
     color: white;
 }

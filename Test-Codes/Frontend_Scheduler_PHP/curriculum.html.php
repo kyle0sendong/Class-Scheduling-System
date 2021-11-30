@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Curriculum</title>
-    <link rel="stylesheet" type="text/css" href="css/curriculum.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/all.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,600;1,100&display=swap" rel="stylesheet">
-</head>
+<link rel="stylesheet" type="text/css" href="css/curriculum.css">
 
+<?php 
+
+    $output = '
     <div class="set">
         <h2><b>CURRICULUM MANAGEMENT</b></h2>
         <form class="d-flex">
@@ -83,7 +74,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Department</label>
-                                    <textarea class="form-control" cols="30" rows='3' name="description"></textarea>
+                                    <textarea class="form-control" cols="30" rows="3" name="description"></textarea>
                                 </div>
                             </div>
                                     
@@ -100,7 +91,7 @@
                 </div>
             </div>  
         </div>
-    </div>
-    
+    </div> ';
+?>
+        
 <?php include __DIR__ . '/../includes/templates/layout.html.php'?>
-</html>
