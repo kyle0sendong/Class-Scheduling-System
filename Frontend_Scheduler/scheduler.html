@@ -35,8 +35,12 @@
                     <h1>Set Schedule</h1>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="inputGroup-sizing-default">Teacher</span>
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"><br>
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required><br>
                     </div>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="inputGroup-sizing-default">Subject</span>
+                      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"><br>
+                  </div>
                     <div class="input-group mb-3">
                         <label class="input-group-text" for="inputGroupSelect01">Grade Level</label>            
                         <select class="form-select form-select-sm" aria-label=".form-select-sm example">
@@ -112,9 +116,9 @@
                                         document.body.style.backgroundColor=color;
                                     }
                                 </script>
-                    </div>
+                          </div>
                     <div class="time-table">
-                        <div id="laryngological-clinic" aria-labelledby="ui-id-7" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel" style="display: block;" aria-hidden="false">
+                        <div id="table" aria-labelledby="ui-id-7" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel" style="display: block;" aria-hidden="false">
                         <table class="timetable">
                         <thead>
                           <h3>TIMETABLE</h3>
@@ -149,7 +153,8 @@
                           <tr class="row_4 row_white">
                             <td>
                               10:00
-                            </td><td></td><td bgcolor="green">Physics</td><td></td><td></td><td></td><td></td>
+                            </td><td></td><td bgcolor="green">Physics Room2
+                            </td><td></td><td></td><td></td><td></td>
                           </tr>
                           <tr class="row_5 row_gray">
                             <td>
@@ -164,9 +169,7 @@
                           <tr class="row_6 row_gray">
                             <td>
                             1:00
-                            </td><td><td bgcolor="red">Math</td>
-                            Ramon Reyes<br>
-                            Room15
+                            </td><td><td bgcolor="red">Mathematics Room5</td><br>
                             </div>
                             <button>Edit</button><button>Delete</button>
                             <span class="tooltip_arrow"></span></div>
@@ -175,7 +178,7 @@
                             <tr class="row_8 row_white">
                             <td>
                             2:00
-                            </td><td></td><td bgcolor="red"></td><td></td><td></td><td bgcolor="blue">Science</td><td></td><td></td></tr>
+                            </td><td></td><td bgcolor="red"></td><td></td><td></td><td bgcolor="blue">Science Room1</td><td></td><td></td></tr>
                             <tr class="row_9 row_gray">
                             <td>
                             3:00
