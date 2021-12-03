@@ -22,23 +22,55 @@ function insert($pdo, $table, $fields) {
     query($pdo, $query, $fields);
 }
 
+//edit info
+function update($pdo, $table, $primaryKey, $fields) {
 
-  
+    $query = ' UPDATE `' . $table .'` SET ';
 
+    foreach ($fields as $key => $value) {
+        $query .= '`' . $key . '` = :' . $key . ',';
+    }
 
-//edit teacher
+    $query = rtrim($query, ',');
+    $query .= ' WHERE `' . $primaryKey . '` = :primaryKey';
+    
+    $fields['primaryKey'] = $fields['id'];
+    $fields = processDates($fields);
 
-//remove teacher
+    query($pdo, $query, $fields);
+}
+
+//remove info
+function delete($pdo, $table, $id) {
+
+    $parameters = [':id' => $id];
+    query($pdo, 'DELETE FROM `' . $table . '`
+    WHERE `id` = :id', $parameters);
+}
 
 //retrieve all information
 function retrieveAll($pdo, $table) {
+
     $result = query($pdo, 'SELECT * FROM `' . $table . '`');
     return $result->fetchAll(); 
 }
 
+function findById($pdo, $table, $primaryKey, $value) {
+
+    $query = 'SELECT * FROM `' . $table . '`
+              WHERE `' . $primaryKey . '` = :value';
+
+    $parameters = [
+        'value' => $value
+    ];
+
+    $query = query($pdo, $query, $parameters);
+    return $query->fetch();
+}
 
 //query 
 function query($pdo, $sql, $parameters = []) {
+
     $query = $pdo->prepare($sql);
     $query->execute($parameters);
     return $query;
