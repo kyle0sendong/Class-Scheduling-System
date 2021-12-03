@@ -1,0 +1,30 @@
+Scheduler
+
+    retrieveGrade 
+    retrieveSection 
+    retrieveTeacher
+    addSubject
+    editSubject
+    deleteSubject
+    downloadExcel
+
+Teacher
+
+    addTeacher
+    retrieveTeacherSchedule (probably just redirect)
+    editTeacher info
+    deleteTeacher
+    retrieveTeacher
+
+Curriculum
+
+    viewTeachersList
+    deleteDepartment
+    addDepartment
+    retrieveDepartment
+    retrieveGradeAndSection
+    editSectionInfo
+    editSectionSchedule
+    deleteSectionSchedule
+
+

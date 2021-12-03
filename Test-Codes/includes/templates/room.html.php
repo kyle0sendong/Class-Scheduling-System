@@ -1,5 +1,10 @@
 <link rel="stylesheet" type="text/css" href="css/room.css">
     
+
+
+<?php 
+
+$output = '
 <div class="set">
     <h2><b>GRADE LEVEL MANAGEMENT</b></h2>
     <form class="d-flex">
@@ -161,8 +166,8 @@
                 </div>
         </div>   
     </div>
-</div>
-
+</div> ';
+?>
 <?php include __DIR__ . '/../includes/templates/layout.html.php'?>
 
 

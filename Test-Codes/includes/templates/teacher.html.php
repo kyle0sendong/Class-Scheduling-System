@@ -1,7 +1,9 @@
-<link rel="stylesheet" type="text/css" href="css/teacher.css">
+<link rel="stylesheet" type="text/css" href="./includes/templates/css/teacher.css">
 
 <?php 
+
 $output = '
+
 <div class="container">
 
 	<p>TEACHER MANAGEMENT</p>
@@ -27,12 +29,12 @@ $output = '
 			</div>
 
 			<div class="modal-body">
-			<form action="" method="post">
+			<form action="teacher.php" method="post">
 
-				<div class="input-group input-group-sm mb-3">
+				<!-- <div class="input-group input-group-sm mb-3">
 					<span class="input-group-text" id="inputGroup-sizing-sm">ID No.</span><br>
 					<input type="text" name="idNum" aria-label="Sizing example input" class="form-control" aria-describedby="inputGroup-sizing-sm" placeholder="id" required><br>
-				</div>
+				</div> -->
 
 				<div class="input-group input-group-sm mb-3">
 					<span class="input-group-text">First Name</span>
@@ -44,22 +46,22 @@ $output = '
 					<input type="text" aria-label="Last name" name="lastName" class="form-control" placeholder="dela Cruz" required><br>
 				</div>
 
-				<div class="input-group input-group-sm mb-3">	<!-- display choice----->
+				<!-- <div class="input-group input-group-sm mb-3">	display DEPARTMENT
 					<span class="input-group-text" id="inputGroup-sizing-sm">Department ID</span>
 					<input type="text" class="form-control" name="dept" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Mathematics" required><br>
-				</div>
+				</div> -->
 
-				<!-- <div class="input-group input-group-sm mb-3"> ----total hours is computed----
+				<!-- <div class="input-group input-group-sm mb-3"> ----total hours is computed, increments by # every subject----
 					<span class="input-group-text" id="inputGroup-sizing-sm">Total Hours</span>
 					<input type="text" class="form-control" name="totalHours" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"><br>
 				</div> -->
 
-				<!-- <div class="input-group input-group-sm mb-3"> ----not sure if required----
+				<!-- <div class="input-group input-group-sm mb-3"> ----not sure if required STATUS----
 					<span class="input-group-text" id="inputGroup-sizing-sm">Faculty Status</span>
 					<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"><br>
 				</div> -->
 
-				<!-- <div class="input-group input-group-sm mb-3">   ----not sure if required-----
+				<!-- <div class="input-group input-group-sm mb-3">   ----not sure if required EMAIL-----
 					<span class="input-group-text" id="inputGroup-sizing-sm">Email</span>
 					<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"><br>
 				</div> -->
@@ -89,22 +91,38 @@ $output = '
 			</tr>
 		</thead>
 
-		<tbody>
-			<tr>
-				<th scope="row">1</th>
-				<td>math_1</td>
-				<td>Anne</td>
-				<td>Cruz</td>
-				<td>math</td>
-				<td>2</td>
-				<td>Full Time</td>
+		<tbody> ';
+
+			
+			$result = retrieveAll($pdo, 'teacher');
+
+			foreach($result as $row) {
+				$output .= '
+				<tr>
+				<td> '.$row['firstName'].' </td>
+				<td> '.$row['firstName'].' </td>
+				<td> '.$row['lastName'].' </td>
+				<td> '.$row['firstName'].' </td>
+				<td> '.$row['firstName'].' </td>
+				<td> '.$row['firstName'].' </td>
+				<td> '.$row['firstName'].' </td>
+
 				<td>
 				<button type="button" class="btn btn-primary">View</button>
 				<button type="button" class="btn btn-warning">Edit</button>
 				<button type="button" class="btn btn-danger">Delete</button>
 				</td>
-			</tr>
-		</tbody> 
+
+				</tr>';
+
+			}
+
+		
+
+		
+			$output .= '
+		</tbody>
+
 	</table>
 
 
@@ -114,11 +132,8 @@ $output = '
 		</div>
 	</div>
 	
-</div>';
+</div>
+';
+
 ?>
 
-
-<?php include __DIR__ . '/../includes/templates/layout.html.php' ?>
-
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
