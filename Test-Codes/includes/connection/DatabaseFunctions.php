@@ -33,7 +33,7 @@ function insert($pdo, $table, $fields) {
 //retrieve all information
 function retrieveAll($pdo, $table) {
     $result = query($pdo, 'SELECT * FROM `' . $table . '`');
-    return $result->fetchAll();
+    return $result->fetchAll(); 
 }
 
 
