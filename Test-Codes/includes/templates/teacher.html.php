@@ -39,6 +39,20 @@ $output = '
 					<span class="input-group-text">Last name</span>
 					<input type="text" aria-label="Last name" name="lastName" class="form-control" placeholder="dela Cruz" required><br>
 				</div>
+
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text">Department</span>
+					<select name="dept">
+						<option value="Mathematics">Mathematics</option>
+						<option value="Science">Science</option>
+						<option value="English">English</option>
+						<option value="Filipino">Filipino</option>
+						<option value="MAPEH">MAPEH</option>
+						<option value="AP">AP</option>
+						<option value="ESP">ESP</option>
+						<option value="TLE">TLE</option>
+					</select>
+				</div>
 			</div>
 
 			<div class="modal-footer">
@@ -55,14 +69,10 @@ $output = '
 	<table class="table table-hover">
 		<thead>
 			<tr>
-				<th scope="col">#</th>
-				<th scope="col">ID Number</th>
-				<th scope="col">First</th>
+				<th scope="col">First </th>
 				<th scope="col">Last</th>
-				<th scope="col">Department ID</th>
-				<th scope="col">Total Hours</th>
-				<th scope="col">Faculty Status</th>
-				<th scope="col">Action</th>
+				<th scope="col">Department</th>
+				<th scope="col">Teaching Hours</th>
 			</tr>
 		</thead>
 
@@ -74,23 +84,72 @@ $output = '
 		foreach($result as $row) {
 			$output .= '
 			<tr>
-			<td> '.$row['id'].' </td>
 			<td> '.$row['firstName'].' </td>
 			<td> '.$row['lastName'].' </td>
-			<td> '.$row['firstName'].' </td>
-			<td> '.$row['firstName'].' </td>
-			<td> '.$row['firstName'].' </td>
-			<td> '.$row['firstName'].' </td>
-
+			<td> '.$row['dept'].' </td>
+			<td> 1 </td>
 			<td>
-			<button type="button" class="btn btn-primary">View</button>
+			<button type="button" class="btn btn-primary">View Schedule</button>
 			
-			<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEdit">Edit</button>
+			<button type="submit" class="btn btn-warning" name="updateEntry" value="updateEntry" data-bs-toggle="modal" data-bs-target="#a'.$row['id'].'">Edit</button>
+			
+			<!-- SHOW FORM WHEN edit IS CLICKED -->
+			<div class="modal fade" id="a'.$row['id'].'" tabindex="-1" aria-labelledby="a'.$row['id'].'" aria-hidden="true">
 
-			<form action="teacher.php" method="post" style="display: inline;">
-			<input type="hidden" name="id" value="'.$row['id'].'">
-			<button type="submit" class="btn btn-danger" name="deleteEntry" value="deleteEntry" action="teacher.php" method="post">Delete</button>
+				<div class="modal-dialog">
+				<div class="modal-content">
+
+					<div class="modal-header">
+						<h5 class="modal-title" id="a'.$row['id'].'">Edit Entry</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+
+					<form action="teacher.php" method="post">
+					<div class="modal-body">
+						<div class="input-group input-group-sm mb-3">
+							<span class="input-group-text">First Name</span>
+							<input type="text" aria-label="First name" name="firstName" class="form-control" value="'.$row['firstName'].'" required><br>
+						</div>
+
+						<div class="input-group input-group-sm mb-3">
+							<span class="input-group-text">Last name</span>
+							<input type="text" aria-label="Last name" name="lastName" class="form-control" value="'.$row['lastName'].'" required><br>
+						</div>
+
+						<div class="input-group input-group-sm mb-3">
+							<span class="input-group-text">Department</span>
+							<select name="dept">
+								<option value="Mathematics">Mathematics</option>
+								<option value="Science">Science</option>
+								<option value="English">English</option>
+								<option value="Filipino">Filipino</option>
+								<option value="MAPEH">MAPEH</option>
+								<option value="AP">AP</option>
+								<option value="ESP">ESP</option>
+								<option value="TLE">TLE</option>
+							</select>
+						</div>
+
+					</div>
+
+					<div class="modal-footer">
+						<input type="hidden" name="id" value="'.$row['id'].'">
+						<button type="submit" class="btn btn-primary" name="updateEntry" value="updateEntry">Save changes</button>
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					</div>
+					</form>	
+
+				</div>
+				</div>
+			</div>   
+
+
+
+			<form action="teacher.php" method="post" style="display: inline;margin:0; padding:0">
+				<input type="hidden" name="id" value="'.$row['id'].'">
+				<button type="submit" class="btn btn-danger" name="deleteEntry" value="deleteEntry">Delete</button>
 			</form>
+
 			</td>
 
 			</tr>';

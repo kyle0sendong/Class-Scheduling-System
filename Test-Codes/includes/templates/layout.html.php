@@ -17,10 +17,10 @@
 <body>
     <div class="nav">
         <ul>
-            <li><a href="main.html.php"><b>HOME</b></a></li>
-            <li><a href="scheduler.html.php"><b>SCHEDULE</b></a></li>
-            <li><a href="teacher.html.php"><b>TEACHER</b></a></li>
-            <li><a href="curriculum.html.php"><b>CURRICULUM</b></a></li>
+            <li><a href="main.php"><b>HOME</b></a></li>
+            <li><a href="scheduler.php"><b>SCHEDULER</b></a></li>
+            <li><a href="teacher.php"><b>DEPARTMENT</b></a></li>
+            <li><a href="curriculum.php"><b>ALL SCHEDULES</b></a></li>
             <li class="nav_btn">
             <span style="font-size: 15px; color: yellow;">
             <a href="login.html.php"><i class="fas fa-sign-out-alt">Logout</i></a></span>

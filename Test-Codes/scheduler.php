@@ -4,18 +4,6 @@
 //Controller for scheduler.html.php
 try {
     
-    //if view schedule
-
-    //if view teacher schedule
-
-    //if edit schedule
-
-    //if delete schedule
-
-    //if view sections
-
-
-    //if view teacher
 
 
 

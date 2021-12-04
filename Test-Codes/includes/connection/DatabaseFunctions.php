@@ -35,7 +35,6 @@ function update($pdo, $table, $primaryKey, $fields) {
     $query .= ' WHERE `' . $primaryKey . '` = :primaryKey';
     
     $fields['primaryKey'] = $fields['id'];
-    $fields = processDates($fields);
 
     query($pdo, $query, $fields);
 }
@@ -55,7 +54,8 @@ function retrieveAll($pdo, $table) {
     return $result->fetchAll(); 
 }
 
-function findById($pdo, $table, $primaryKey, $value) {
+
+function retrieveId($pdo, $table, $primaryKey, $value) {
 
     $query = 'SELECT * FROM `' . $table . '`
               WHERE `' . $primaryKey . '` = :value';

@@ -1,34 +1,39 @@
-
 <?php 
 
-
-
 try {
+
     include __DIR__ . './includes/connection/DatabaseConnect.php';
     include __DIR__ . './includes/connection/DatabaseFunctions.php';
     
-    //if set add new teacher if(isset($_POST['submit']))
     if(isset($_POST['newEntry'])) {
 
         insert($pdo, 'teacher', 
             ['firstName' => $_POST['firstName'],
-             'lastName' => $_POST['lastName']]
+             'lastName' => $_POST['lastName'],
+             'dept' => $_POST['dept']]
         );
 
         header('Location: teacher.php');
     }
 
-    //if edit teacher
     if(isset($_POST['updateEntry'])) {
-        
+
+        update($pdo, 'teacher', 'id', 
+            ['id' => $_POST['id'],
+            'firstName' => $_POST['firstName'],
+            'lastName' => $_POST['lastName'],
+            'dept' => $_POST['dept']]
+        );
+
+        header('Location: teacher.php');
     }
 
-    //if delete teacher
     if(isset($_POST['deleteEntry'])) {
         
         delete($pdo, 'teacher', $_POST['id']);
         header('Location: teacher.php');
     }
+
     //if view subjects, redirect
 
     
