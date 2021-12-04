@@ -19,8 +19,8 @@
         <ul>
             <li><a href="main.php"><b>HOME</b></a></li>
             <li><a href="scheduler.php"><b>SCHEDULER</b></a></li>
-            <li><a href="teacher.php"><b>DEPARTMENT</b></a></li>
-            <li><a href="curriculum.php"><b>ALL SCHEDULES</b></a></li>
+            <li><a href="curriculum.php"><b>DEPARTMENT</b></a></li>
+            <li><a href="schedules.php"><b>ALL SCHEDULES</b></a></li>
             <li class="nav_btn">
             <span style="font-size: 15px; color: yellow;">
             <a href="login.html.php"><i class="fas fa-sign-out-alt">Logout</i></a></span>

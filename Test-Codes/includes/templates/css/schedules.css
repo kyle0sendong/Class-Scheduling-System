@@ -6,13 +6,14 @@
 }
 table {
     position: absolute;
-    width: 900px;
+    width: 700px;
     margin-left: 30x;
-    top: 90px;
+    top: 70px;
     left: 450px;
+    font-size: 10px;
 }
 thead, tr, th {
-    height: 50px;
+    height: 40px;
     text-align: right;
     padding-left: 10px;  
 }
@@ -30,7 +31,6 @@ button[type="button"]{
 tr:hover {
     background-color: #8f8786
 }
-
 .next-button{
     position: absolute;
     right: 85%;
@@ -39,3 +39,9 @@ tr:hover {
 .next-button a{
     font-size: 10px;
 }
+.container-fluid{
+    position: absolute;
+    top: 50px;
+    left: 10px;
+}
+

@@ -6,7 +6,7 @@ $output = '
 
 <div class="container">
 
-	<p>TEACHER MANAGEMENT</p>
+	<p>Faculty Management</p>
 
 	<form action="" method="post" class="d-flex">
 		<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

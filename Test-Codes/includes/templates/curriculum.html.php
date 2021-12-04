@@ -41,14 +41,8 @@ $output = '
             </tbody>
 
         </table>
-
-
         
     </div> 
-        <div class="next-button">
-            <a class="btn btn-light" href="#" role="button"><i class="fas fa-chevron-left"></i>Previous</a>
-            <a class="btn btn-light" href="room.php" role="button"><i class="fas fa-chevron-right"></i>Grade & Section</a>
-        </div>    
     
 </div> 
 ';
