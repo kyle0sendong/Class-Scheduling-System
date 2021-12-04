@@ -23,20 +23,20 @@ $output = '
                     <td><b>Mathematics<b></td>
                     <td>adsf</td>
                     <td>johnnn</td>
-                    <td> <link><a href="#"><button type="button" class="btn btn-primary">Show Faculties</button></a></link> </td>
+                    <td> <link><a href="teacher.php"><button type="button" class="btn btn-primary">Show Faculties</button></a></link> </td>
                 </tr>
 
                 <tr>
                     <td><b>Science<b></td>
                     <td>dfadf</td>
                     <td>johnnn</td>
-                    <td> <link><a href="#"><button type="button" class="btn btn-primary">Show Faculties</button></a></link> </td>
+                    <td> <link><a href="teacher.php"><button type="button" class="btn btn-primary">Show Faculties</button></a></link> </td>
                 
                 <tr>
                     <td><b>English<b></td>
                     <td>dfadf</td>
                     <td>johnnn</td>
-                    <td> <link><a href="#"><button type="button" class="btn btn-primary">Show Faculties</button></a></link> </td>
+                    <td> <link><a href="teacher.php"><button type="button" class="btn btn-primary">Show Faculties</button></a></link> </td>
                 </tr>
             </tbody>
 
@@ -47,7 +47,7 @@ $output = '
     </div> 
         <div class="next-button">
             <a class="btn btn-light" href="#" role="button"><i class="fas fa-chevron-left"></i>Previous</a>
-            <a class="btn btn-light" href="room.html" role="button"><i class="fas fa-chevron-right"></i>Grade & Section</a>
+            <a class="btn btn-light" href="room.php" role="button"><i class="fas fa-chevron-right"></i>Grade & Section</a>
         </div>    
     
 </div> 
