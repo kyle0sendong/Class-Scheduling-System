@@ -90,5 +90,20 @@ function query($pdo, $sql, $parameters = []) {
     return $query;
 }
 
+function total($pdo, $table) {
+    $query = query($pdo, 'SELECT COUNT(*)
+                    FROM `' . $table . '`');
+    $row = $query->fetch();
+    return $row[0];
+}
+
+function totalId($pdo, $table, $primaryKey, $value) {
+    $query = query($pdo, 'SELECT COUNT(*) FROM `' . $table . 
+                    '` WHERE `' . $primaryKey . '` = \'' . $value . '\'');
+
+    $row = $query->fetch();
+    return $row[0];
+}
+
 
 ?>
