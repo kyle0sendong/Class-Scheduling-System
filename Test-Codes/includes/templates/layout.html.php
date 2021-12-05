@@ -17,27 +17,25 @@
 
 <body>
     <div class="nav">
-        <ul>
+
+        <div class="nav_logo">
+            <img src="./includes/templates/logosched.png" width="29px" height="24px" style="margin-left:7%">
+            <h3 >Class Scheduler</h3>
+        </div>
+
+        <ul>   
             <li><a href="main.php"><b>HOME</b></a></li>
             <li><a href="scheduler.php"><b>SCHEDULER</b></a></li>
             <li><a href="curriculum.php"><b>DEPARTMENT</b></a></li>
-            <li><a href="schedules.php"><b>ALL SCHEDULES</b></a></li>
-            <li class="nav_btn">
-            <span style="font-size: 15px; color: yellow;">
-            <a href="login.html.php"><i class="fas fa-sign-out-alt">Logout</i></a></span>
+            <li><a href="schedules.php"><b>SCHEDULES</b></a></li>
+
         </ul>
-    
-
-        <div class="name">
-            <div class="content">
-                <h1>Class Scheduler</h1>
-            </div>
-        </div>
-
-        <div class="logo">
-            <img src="./includes/templates/logosched.png">
-        </div>
-
+        
+        <li class="nav_btn">
+                <span style="font-size: 15px; color: yellow;">
+                    <a href="login.html.php"><i class="fas fa-sign-out-alt">Logout</i></a>
+                </span>
+        </li>
     </div>
 <!-- -->
     

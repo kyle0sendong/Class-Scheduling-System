@@ -1,220 +1,63 @@
 <link rel="stylesheet" type="text/css" href="./includes/templates/css/scheduler.css">
 
-
 <?php 
 
 $output = '
 
-<div class="sched">
-
-    <div class="add-module">
-
-      <h1>Set Schedule</h1>
-      <div class="input-group mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-default">Teacher</span>
-          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"><br>
-      </div>
-
-      <div class="input-group mb-3">
-
-          <label class="input-group-text" for="inputGroupSelect01">Grade Level</label>            
-          <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-              <option selected>Choose...</option>
-              <option value="1">7</option>
-              <option value="2">8</option>
-              <option value="3">9</option>
-              <option value="4">10</option><br>
-          </select>
-
-          <label class="input-group-text" for="inputGroupSelect01">Section</label>   
-          <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-              <option selected>Choose...</option>
-              <option value="1">A</option>
-              <option value="2">B</option>
-              <option value="3">C</option>
-              <option value="4">D</option>
-              <option value="5">E</option>
-              <option value="6">F</option><br>
-          </select>
-
-          <div class="input-group mb-3">
-              <label class="input-group-text" for="inputGroupSelect01">Rooms</label>
-              <select class="form-select" id="inputGroupSelect01">
-              <option selected>Available Rooms</option>
-              <option value="1">R1</option>
-              <option value="2">R2</option>
-              <option value="3">R3</option>
-              <option value="4">R4</option>
-              </select>
-          </div>
-
-      </div>
-
-        <div class="time-select">
-            <h2>Start Time</h2>
-            <input type="time" value="09:00"><br>
-            <h2>End Time</h2>
-            <input type="time" value="10:00">
-            <h2>Day</h2>
-        </div>
-
-        <div class="form-check">
-
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-          <label class="form-check-label" for="flexCheckDefault">
-            Monday
-          </label>
-            
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-          <label class="form-check-label" for="flexCheckChecked">
-            Tuesday
-          </label>
-
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-          <label class="form-check-label" for="flexCheckDefault">
-            Wednesday
-          </label>
-
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-          <label class="form-check-label" for="flexCheckChecked">
-            Thurday
-          </label>
-
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-          <label class="form-check-label" for="flexCheckDefault">
-            Friday
-          </label>
-
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-          <label class="form-check-label" for="flexCheckChecked">
-            Saturday
-          </label>
-          
-        </div>
+<div class="sched-grid">
 
 
-        <div class="parent flex-center">
+  <div class="add-module">
+    <h1>Module Name</h1>
+    <input type="text" placeholder="Module Name.. ex. Computer Science">
 
-            <div id="input-container">
-              <label>Color</label>
-              <input type="Color" name="co" onchange="changeColor()">
-            </div>
+    <h1>Module Code</h1>
+    <input type="text" placeholder="Module Code.. ex. CS101">
 
-            <div id="box">
-            <button type="button" class="btn btn-warning">Add to Timetable</button>  
-            </div>
-
-        </div>   
-
-        <script type="text/javascript">
-            function changeColor() {
-                let color = document.getElementById("box").value;
-                document.body.style.backgroundColor=color;
-            }
-        </script>
+    <div class="half">
+      <h1>Start Time</h1>
+      <input type="time" value="09:00">
     </div>
 
-    <div class="time-table">
+    <div class="half">
+      <h1>End Time</h1>
+      <input type="time" value="10:00">
+    </div>  
+      
+    <h1>location</h1>
+    <input type="text" placeholder="Location.. ex. CS Building">
+    <h1>Day</h1>
 
-      <div id="laryngological-clinic" aria-labelledby="ui-id-7" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel" style="display: block;" aria-hidden="false"> 
+    <ul class="day-picker">
+      <li>Mon</li><li class="day-selected">Tue</li><li>Wed</li><li>Thu</li><li>Fri</li>
+    </ul>
+      
+    <h1>Color</h1>
+    <ul class="color-picker">
+      <li class="blue"></li>
+      <li class="red color-selected"></li>
+      <li class="yellow"></li>
+      <li class="purple"></li>
+      <li class="green"></li>
+      <li class="orange"></li>
+      <li class="gray"></li>
+    </ul>
 
-      <table class="timetable">
+    <form>
+      <input type="submit" value="Add to Timetable">
+    </form>
+  </div>
 
-        <thead>
-          <h3>TIMETABLE</h3>
-          <tr>
-            <th>Time & Day</th>
-            <th>MONDAY</th>
-            <th>TUESDAY</th>
-            <th>WEDNESDAY</th>  
-            <th>THURSDAY</th>
-            <th>FRIDAY</th>
-            <th>SATURDAY</th>
-          </tr>
-        </thead>
-                  
-        <tbody>
+  <div class="col2">
 
-          <tr class="row_1 row_gray">
-            <td>
-              7:00
-            </td><td></td><td></td><td></td><td></td></span>
-          
-          </td><td></td></td><td></td><td></td>
-          </tr>
+    
 
-          <tr class="row_2 row_white">
-            <td>
-              8:00
-            </td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-          </tr>
+  </div>
 
-          <tr class="row_3 row_gray">
-            <td>
-              9:00
-            </td><td></td><td></td><td></td><td></td><td></td><td></td>
-          </tr>
+</div>
 
-          <tr class="row_4 row_white">
-            <td>
-              10:00
-            </td><td></td><td bgcolor="green">Physics</td><td></td><td></td><td></td><td></td>
-          </tr>
-
-          <tr class="row_5 row_gray">
-            <td>
-              11:00
-            </td><td></td><td bgcolor="green"></td><td></td><td></td><td></td><td></td>
-          </tr>
-
-          <tr class="row_6 row_white">
-            <td>
-            12:00
-            </td><td></td><td></td><td></td><td></td><td></td><td></td>
-          </tr>
-
-          <tr class="row_6 row_gray">
-            <td>
-            1:00
-            </td><td><td bgcolor="red">Math</td>
-            Ramon Reyes<br>
-            Room15
-            
-            <button>Edit</button><button>Delete</button>
-            <span class="tooltip_arrow"></span>
-            </td><td></td></td><td></td><td></td><td></td>
-          </tr>
-
-          <tr class="row_8 row_white">
-          <td>
-          2:00
-          </td><td></td><td bgcolor="red"></td><td></td><td></td><td bgcolor="blue">Science</td><td></td><td></td>
-          </tr>
-
-          <tr class="row_9 row_gray">
-          <td>
-          3:00
-          </td><td></td><td></td><td></td><td></td><td bgcolor="blue"></td><td></td>
-          </tr>
-
-          <tr class="row_10 row_white">
-          <td>
-          4.00
-          </td><td></td><td></td><td></td>
-          </tr>
-
-        </tbody>
-      </table>
-
-      </div>           
-        
-        <div class="action">
-            <a class="btn btn-primary" href="tb.html" role="button"><i class="far fa-edit"></i></a>
-            <button type="btn" class="btn btn-primary"><i class="fa fa-download"></i></button>
-        </div>   
-
-    </div>
-</div>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script  src="./includes/templates/script/add-module.js"></script>
 ';
 ?>
       
