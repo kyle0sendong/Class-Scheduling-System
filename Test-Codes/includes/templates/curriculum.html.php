@@ -3,15 +3,17 @@
 <?php 
 
 $output = '
-<div class="set">
-                <h2><b>Teaching Departments</b></h2>
+
+<div class="dept_title">
+    <h2><b>Teaching Departments</b></h2>
 </div>
+
 <div class="table">
 
     <table>
         <thead> 
             <tr>
-                <th style="text-align: center;">Department</th>
+                <th style="text-align: center;"></th>
                 <th style="text-align: center;">No. of Faculty/s</th>
                 <th style="text-align: center;">Department Head</th>
                 <th style="text-align: center;"></th>
