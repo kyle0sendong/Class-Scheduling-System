@@ -47,12 +47,15 @@ tbody, tr, td {
     text-align: left;
     padding-left: 10px;
 }
+
 td {
     text-align-last: center;
 }
+
 button[type="button"]{
-    font-size: 8px;
+    font-size: 11px;
     cursor: pointer;
+    margin-left: 5px;
 }
 
 tr:hover {

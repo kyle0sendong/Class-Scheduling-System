@@ -26,19 +26,36 @@ $output = '
         <form action="" method="post">
             <div class="card-body"> 
                 <input type="hidden" name="id">
-                <div class="form-group">
+                
+                <div class="form-group" style="margin:5px;">
                     <label class="control-label">Grade Level</label>
-                    <input type="text" class="form-control" name="subject">
+                    <select class="form-control" name="grade">
+                        <option value="g7">7</option>
+                        <option value="g8">8</option>
+                        <option value="g9">9</option>
+                        <option value="g10">10</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label">Section</label>
-                    <input type="text" class="form-control" name="subject">
+                    <select class="form-control" name="section">
+                        <option value="sectionA">A</option>
+                        <option value="sectionB">B</option>
+                        <option value="sectionC">C</option>
+                        <option value="sectionD">D</option>
+                        <option value="sectionE">E</option>
+                        <option value="sectionF">F</option>
+                        <option value="sectionG">G</option>
+                        <option value="sectionH">H</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label">Adviser</label>
-                    <input type="text" class="form-control" name="subject">
+                    <select class="form-control" name="section">
+                        <option value="tbc">To be decided</option>
+                    </select>
                 </div>
             </div>
                 
@@ -51,7 +68,6 @@ $output = '
                 </div>
             </div>
         </form>
-
     </div>
 
     <div class="table" style="display:inline-block; width:62%; margin: 5% 5% 10% 5%;" >
@@ -73,7 +89,7 @@ $output = '
                 <td>1/8</td>
                 <td>John John</td>
                 <td>
-                    <link><a href="#"><button type="button" class="btn btn-primary">Edit Schedule</button></a></link>
+                    <link><a href="scheduler.php" target="_blank"><button type="button" class="btn btn-primary">Edit Schedule</button></a></link>
                     <link><a href="#"><button type="button" class="btn btn-danger">Remove</button></a></link>
                 </td>
             </tr>
@@ -84,7 +100,7 @@ $output = '
                 <td>0/8</td>
                 <td>Neeee</td>
                 <td>
-                <link><a href="#"><button type="button" class="btn btn-primary">Edit Schedule</button></a></link>
+                <link><a href="scheduler.php" target="_blank"><button type="button" class="btn btn-primary">Edit Schedule</button></a></link>
                 <link><a href="#"><button type="button" class="btn btn-danger">Remove</button></a></link>
                 </td>
             </tr>

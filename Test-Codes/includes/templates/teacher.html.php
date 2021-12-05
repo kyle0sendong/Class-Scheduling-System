@@ -28,7 +28,7 @@ $output = '
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 
-			<form action="teacher.php" method="post">
+			<form action="teacher.php?dept='.$dept.'" method="post">
 			<div class="modal-body">
 				<div class="input-group input-group-sm mb-3">
 					<span class="input-group-text">First Name</span>
@@ -51,6 +51,28 @@ $output = '
 						<option value="AP">AP</option>
 						<option value="ESP">ESP</option>
 						<option value="TLE">TLE</option>
+					</select>
+				</div>
+
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text">Department Head of </span>
+					<select name="">
+						<option value="tbd">To be decided</option>
+						<option value="Mathematics">Mathematics</option>
+						<option value="Science">Science</option>
+						<option value="English">English</option>
+						<option value="Filipino">Filipino</option>
+						<option value="MAPEH">MAPEH</option>
+						<option value="AP">AP</option>
+						<option value="ESP">ESP</option>
+						<option value="TLE">TLE</option>
+					</select>
+				</div>
+
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text">Adviser of </span>
+					<select name="">
+						<option value="tbd">To be decided</option>
 					</select>
 				</div>
 			</div>
@@ -79,7 +101,7 @@ $output = '
 		<tbody> ';
 
 			
-		$result = retrieveAll($pdo, 'teacher');
+		$result = retrieveAllId($pdo, 'teacher', 'dept', $dept);
 
 		foreach($result as $row) {
 			$output .= '
@@ -104,7 +126,7 @@ $output = '
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 
-					<form action="teacher.php" method="post">
+					<form action="teacher.php?dept='.$dept.'" method="post">
 					<div class="modal-body">
 						<div class="input-group input-group-sm mb-3">
 							<span class="input-group-text">First Name</span>
@@ -130,6 +152,27 @@ $output = '
 							</select>
 						</div>
 
+						<div class="input-group input-group-sm mb-3">
+							<span class="input-group-text">Department Head of </span>
+							<select name="">
+								<option value="tbd">To be decided</option>
+								<option value="Mathematics">Mathematics</option>
+								<option value="Science">Science</option>
+								<option value="English">English</option>
+								<option value="Filipino">Filipino</option>
+								<option value="MAPEH">MAPEH</option>
+								<option value="AP">AP</option>
+								<option value="ESP">ESP</option>
+								<option value="TLE">TLE</option>
+							</select>
+						</div>
+	
+						<div class="input-group input-group-sm mb-3">
+							<span class="input-group-text">Adviser of </span>
+							<select name="">
+								<option value="tbd">To be decided</option>
+							</select>
+						</div>
 					</div>
 
 					<div class="modal-footer">
@@ -143,9 +186,7 @@ $output = '
 				</div>
 			</div>   
 
-
-
-			<form action="teacher.php" method="post" style="display: inline;margin:0; padding:0">
+			<form action="teacher.php?dept='.$dept.'" method="post" style="display: inline;margin:0; padding:0">
 				<input type="hidden" name="id" value="'.$row['id'].'">
 				<button type="submit" class="btn btn-danger" name="deleteEntry" value="deleteEntry">Delete</button>
 			</form>

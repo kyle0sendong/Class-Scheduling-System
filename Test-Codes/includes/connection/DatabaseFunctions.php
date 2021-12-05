@@ -54,6 +54,20 @@ function retrieveAll($pdo, $table) {
     return $result->fetchAll(); 
 }
 
+//retrieve all information
+function retrieveAllId($pdo, $table, $primaryKey, $value) {
+
+    $query = 'SELECT * FROM `' . $table . '`
+              WHERE `' . $primaryKey . '` = :value';
+
+    $parameters = [
+        'value' => $value
+    ];
+
+    $query = query($pdo, $query, $parameters);
+    return $query->fetchAll(); 
+
+}
 
 function retrieveId($pdo, $table, $primaryKey, $value) {
 

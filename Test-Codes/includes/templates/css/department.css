@@ -26,20 +26,24 @@ table {
     margin: auto;
     width: 70%;
 }
+
 thead, tr, th {
     height: 50px;
     text-align: right;
     padding-left: 10px;  
 }
+
 tbody, tr, td {
     text-align: left;
     padding-left: 10px;
 }
+
 td {
     text-align-last: center;
 }
+
 button[type="button"]{
-    font-size: 8px;
+    font-size: 10px;
     cursor: pointer;
 }
 
