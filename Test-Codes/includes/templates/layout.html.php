@@ -26,7 +26,7 @@
         <ul>   
             <li><a href="main.php"><b>HOME</b></a></li>
             <li><a href="scheduler.php"><b>SCHEDULER</b></a></li>
-            <li><a href="curriculum.php"><b>DEPARTMENT</b></a></li>
+            <li><a href="department.php"><b>DEPARTMENT</b></a></li>
             <li><a href="schedules.php"><b>SCHEDULES</b></a></li>
 
         </ul>
