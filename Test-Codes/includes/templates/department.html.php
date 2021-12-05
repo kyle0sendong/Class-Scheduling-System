@@ -6,7 +6,10 @@ $output = '
 
 <div class="dept_title">
     <h2><b>Teaching Departments</b></h2>
+    
 </div>
+
+<hr style="border-top: 3px solid black; margin-top: -10px;">
 
 <div class="table">
 

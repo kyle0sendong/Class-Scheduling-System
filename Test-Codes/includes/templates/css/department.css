@@ -9,13 +9,18 @@
     align-items: center;
 }
 
-.dept_title h2 {
+.dept_title h2{
     font-family: Helvetica, sans-serif;
     padding: 10px;
     font-weight: bold;
     font-size: 24px;
     margin: 2% auto;
 }
+
+hr{
+    
+}
+
 
 .table {
     width: 80%;
