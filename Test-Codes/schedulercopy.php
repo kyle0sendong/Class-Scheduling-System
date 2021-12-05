@@ -25,7 +25,7 @@ try {
     //if view subjects, redirect
 
     
-    include __DIR__ . './includes/templates/scheduler.html.php';
+    include __DIR__ . './includes/templates/schedulercopy.html.php';
     
 } catch (PDOException $e) {
     include __DIR__ . './includes/connection/displayError.php';

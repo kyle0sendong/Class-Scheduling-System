@@ -128,6 +128,6 @@ $output = '
 <!--      line 133
 <div class="next-button">
     <a class="btn btn-light" href="curriculum.html" role="button"><i class="fas fa-chevron-left"></i>Previous</a>
-    <a class="btn btn-light" href="#" role="button"><i class="fas fa-chevron-right"></i>Next</a>
+    <a class="btn btn-light" href="#" role="button"><i` class="fas fa-chevron-right"></i>Next</a>
 </div> 
 -->

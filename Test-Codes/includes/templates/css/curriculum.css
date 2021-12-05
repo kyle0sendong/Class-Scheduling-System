@@ -1,15 +1,13 @@
-.d-flex{
-    width: 300x;
-    position: absolute;
-    left: 800px;
-    top: 10px;
+
+.table {
+    margin-top: 7%;
+    width: 80%;
+    height: 80%;
 }
+
 table {
-    position: absolute;
-    width: 900px;
-    margin-left: 30x;
-    top: 90px;
-    left: 450px;
+    margin: auto;
+    width: 70%;
 }
 thead, tr, th {
     height: 50px;
@@ -27,15 +25,4 @@ button[type="button"]{
     font-size: 8px;
     cursor: pointer;
 }
-tr:hover {
-    background-color: #8f8786
-}
 
-.next-button{
-    position: absolute;
-    right: 85%;
-    top: 400px;
-}
-.next-button a{
-    font-size: 10px;
-}
