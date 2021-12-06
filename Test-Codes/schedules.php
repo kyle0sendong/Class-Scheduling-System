@@ -10,11 +10,20 @@ try {
         $parameters = [
             'grade' => $_POST['grade'],
             'section' => $_POST['section'],
-            'adviser_id' => $_POST['adviser']
         ];
 
         insert($pdo, 'grade_level', $parameters);
+
+        $last = $pdo->lastInsertId(); //take the id of the new row and put on adviser table
+        insert($pdo, 'adviser', [
+            'gradesection_id' => $last,
+            'teacher_id' => $_POST['adviser']
+        ]);
+
         header('Location: schedules.php');
+
+
+        
     }
 
     if(isset($_POST['updateEntry'])) {

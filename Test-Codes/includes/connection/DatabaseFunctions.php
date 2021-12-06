@@ -34,7 +34,8 @@ function update($pdo, $table, $primaryKey, $fields) {
     $query = rtrim($query, ',');
     $query .= ' WHERE `' . $primaryKey . '` = :primaryKey';
     
-    $fields['primaryKey'] = $fields['id'];
+    $id = $primaryKey;
+    $fields['primaryKey'] = $fields[$id];
 
     query($pdo, $query, $fields);
 }

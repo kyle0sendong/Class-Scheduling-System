@@ -54,7 +54,9 @@ $output .= '
 ';
                 foreach($allTeachers as $row) { //print all teacher option
 $output .= '        
-                    <option value="'.$row['id'].'">'.$row['firstName'].' '.$row['lastName'].'</option>
+                    <option value="'.$row['id'].'">
+                    '.$row['firstName'].' '.$row['lastName'].
+                    '</option>
 ';
                 }
 
@@ -95,19 +97,19 @@ $output .= '
         
 ';
 
-        //display each row in the table
+        //display each row in the GRADE and SECTIONS table
         for ($i = 7; $i <= 10; $i++) {
 
-$output .= ' 
+            $output .= ' 
             <tr>
                 <td><b>'.$i.'</b></td>
-';   
+            ';   
             $allLevels = retrieveAllId($pdo, 'grade_level', 'grade', $i);
         
             foreach($allLevels as $row) {
-                $adviser = retrieveId($pdo, 'teacher', 'id', $row['adviser_id']);
-                
-$output .= '  
+                $adviser = retrieveId($pdo, 'adviser', 'gradesection_id', $row['id']);
+                $adviser = retrieveId($pdo, 'teacher', 'id', $adviser['teacher_id']);
+                $output .= '  
                 <td>'.$row['section'].'</td>
                 <td>0/8</td>
                 <td>0/24</td>
@@ -119,7 +121,7 @@ $output .= '
             </tr>
             <tr>
                 <td></td>   <!-- for the first column -->
-';
+                ';
             }
         }
 
