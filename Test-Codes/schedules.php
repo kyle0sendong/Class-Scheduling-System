@@ -7,12 +7,17 @@ try {
     
     if(isset($_POST['newEntry'])) {
 
+        $parameters = [
+            'grade' => $_POST['grade'],
+            'section' => $_POST['section'],
+            'adviser_id' => $_POST['adviser']
+        ];
 
+        insert($pdo, 'grade_level', $parameters);
         header('Location: schedules.php');
     }
 
     if(isset($_POST['updateEntry'])) {
-
 
         header('Location: schedules.php');
     }

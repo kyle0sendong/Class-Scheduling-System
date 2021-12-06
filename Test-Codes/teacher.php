@@ -9,40 +9,42 @@ try {
 
     //if view subjects, redirect
     
-    if(isset($_GET['dept'])) {
+    if(isset($_GET['search'])) {
 
-        $dept = $_GET['dept'];
+        $dept = $_GET['search'];
 
         include __DIR__ . './includes/templates/teacher.html.php';
 
         if(isset($_POST['newEntry'])) {
 
-            insert($pdo, 'teacher', 
-                ['firstName' => $_POST['firstName'],
-                 'lastName' => $_POST['lastName'],
-                 'dept' => $_POST['dept']]
-            );
+            $parameters = [
+                'firstName' => $_POST['firstName'],
+                'lastName' => $_POST['lastName'],
+                'dept' => $_POST['dept']
+            ];
+
+            insert($pdo, 'teacher', $parameters);
     
-            header('Location: teacher.php?dept=' . $dept);
+            header('Location: teacher.php?search=' . $dept);
         }
     
         if(isset($_POST['updateEntry'])) {
-    
-            update($pdo, 'teacher', 'id', 
-                ['id' => $_POST['id'],
+
+            $parameters = [
+                'id' => $_POST['id'],
                 'firstName' => $_POST['firstName'],
                 'lastName' => $_POST['lastName'],
-                'dept' => $_POST['dept']]
-            );
-    
-            header('Location: teacher.php?dept=' . $dept);
+                'dept' => $_POST['dept']
+            ];
+
+            update($pdo, 'teacher', 'id', $parameters);
+            header('Location: teacher.php?search=' . $dept);
         }
     
         if(isset($_POST['deleteEntry'])) {
             
             delete($pdo, 'teacher', $_POST['id']);
-            
-            header('Location: teacher.php?dept=' . $dept);
+            header('Location: teacher.php?search=' . $dept);
         }
         
     }

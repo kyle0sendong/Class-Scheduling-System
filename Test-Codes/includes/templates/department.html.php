@@ -2,16 +2,14 @@
 
 <?php 
 
-$mathDept = totalId($pdo, 'teacher', 'dept', 'Mathematics');
-$sciDept = totalId($pdo, 'teacher', 'dept', 'Science');
-$engDept = totalId($pdo, 'teacher', 'dept', 'English');
-$filDept = totalId($pdo, 'teacher', 'dept', 'Filipino');
-$mapehDept = totalId($pdo, 'teacher', 'dept', 'MAPEH');
-$apDept = totalId($pdo, 'teacher', 'dept', 'AP');
-$espDept = totalId($pdo, 'teacher', 'dept', 'ESP');
-$tleDept = totalId($pdo, 'teacher', 'dept', 'TLE');
-
-
+$mathCount = totalId($pdo, 'teacher', 'dept', 'Mathematics');
+$sciCount = totalId($pdo, 'teacher', 'dept', 'Science');
+$engCount = totalId($pdo, 'teacher', 'dept', 'English');
+$filCount = totalId($pdo, 'teacher', 'dept', 'Filipino');
+$mapehCount = totalId($pdo, 'teacher', 'dept', 'MAPEH');
+$apCount = totalId($pdo, 'teacher', 'dept', 'AP');
+$espCount = totalId($pdo, 'teacher', 'dept', 'ESP');
+$tleCount = totalId($pdo, 'teacher', 'dept', 'TLE');
 
 $output = '
 
@@ -37,53 +35,53 @@ $output = '
         <tbody>
             <tr>
                 <td><b>Mathematics<b></td>
-                <td>'.$mathDept.'</td>
+                <td>'.$mathCount.'</td>
                 <td>johnnn</td>
-                <td> <link><a href="teacher.php?dept=Mathematics"><button type="button" class="btn btn-primary">Show Faculties</button></a></link> </td>
+                <td> <link><a href="teacher.php?search=Mathematics"><button type="button" class="btn btn-primary">Show Faculties</button></a></link> </td>
             </tr>
 
             <tr>
                 <td><b>Science<b></td>
-                <td>'.$sciDept.'</td>
+                <td>'.$sciCount.'</td>
                 <td>johnnn</td>
-                <td> <link><a href="teacher.php?dept=Science"><button type="button" class="btn btn-primary">Show Faculties</button></a></link> </td>
+                <td> <link><a href="teacher.php?search=Science"><button type="button" class="btn btn-primary">Show Faculties</button></a></link> </td>
             
             <tr>
                 <td><b>English<b></td>
-                <td>'.$engDept.'</td>
+                <td>'.$engCount.'</td>
                 <td>johnnn</td>
-                <td> <link><a href="teacher.php?dept=English"><button type="button" class="btn btn-primary">Show Faculties</button></a></link> </td>
+                <td> <link><a href="teacher.php?search=English"><button type="button" class="btn btn-primary">Show Faculties</button></a></link> </td>
             </tr>
 
             <tr>
                 <td><b>Filipino<b></td>
-                <td>'.$filDept.'</td>
+                <td>'.$filCount.'</td>
                 <td>johnnn</td>
-                <td> <link><a href="teacher.php?dept=Filipino"><button type="button" class="btn btn-primary">Show Faculties</button></a></link> </td>
+                <td> <link><a href="teacher.php?search=Filipino"><button type="button" class="btn btn-primary">Show Faculties</button></a></link> </td>
             </tr>
             <tr>
                 <td><b>MAPEH<b></td>
-                <td>'.$mapehDept.'</td>
+                <td>'.$mapehCount.'</td>
                 <td>johnnn</td>
-                <td> <link><a href="teacher.php?dept=MAPEH"><button type="button" class="btn btn-primary">Show Faculties</button></a></link> </td>
+                <td> <link><a href="teacher.php?search=MAPEH"><button type="button" class="btn btn-primary">Show Faculties</button></a></link> </td>
             </tr>
             <tr>
                 <td><b>AP<b></td>
-                <td>'.$apDept.'</td>
+                <td>'.$apCount.'</td>
                 <td>johnnn</td>
-                <td> <link><a href="teacher.php?dept=AP"><button type="button" class="btn btn-primary">Show Faculties</button></a></link> </td>
+                <td> <link><a href="teacher.php?search=AP"><button type="button" class="btn btn-primary">Show Faculties</button></a></link> </td>
             </tr>   
             <tr>
                 <td><b>ESP<b></td>
-                <td>'.$espDept.'</td>
+                <td>'.$espCount.'</td>
                 <td>johnnn</td>
-                <td> <link><a href="teacher.php?dept=ESP"><button type="button" class="btn btn-primary">Show Faculties</button></a></link> </td>
+                <td> <link><a href="teacher.php?search=ESP"><button type="button" class="btn btn-primary">Show Faculties</button></a></link> </td>
             </tr>
             <tr>
                 <td><b>TLE<b></td>
-                <td>'.$tleDept.'</td>
+                <td>'.$tleCount.'</td>
                 <td>johnnn</td>
-                <td> <link><a href="teacher.php?dept=TLE"><button type="button" class="btn btn-primary">Show Faculties</button></a></link> </td>
+                <td> <link><a href="teacher.php?search=TLE"><button type="button" class="btn btn-primary">Show Faculties</button></a></link> </td>
             </tr>        
                         
         </tbody>
