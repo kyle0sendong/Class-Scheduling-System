@@ -1,7 +1,6 @@
 <?php 
 
 try {
-
     include __DIR__ . './includes/connection/DatabaseConnect.php';
     include __DIR__ . './includes/connection/DatabaseFunctions.php';
 

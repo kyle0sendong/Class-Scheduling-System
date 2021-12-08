@@ -106,5 +106,15 @@ function totalId($pdo, $table, $primaryKey, $value) {
     return $row[0];
 }
 
+function searchName($pdo, $table, $search) {
+    $query = 'SELECT * FROM `' . $table . '` WHERE CONCAT(firstName, " ", lastName) 
+            LIKE :search OR lastName LIKE :search';
 
+    $parameters = [
+        'search' => '%' .$search. '%'
+    ];
+
+    $query = query($pdo, $query, $parameters);
+    return $query->fetchAll();
+}   
 ?>

@@ -2,18 +2,20 @@
 
 <?php 
 
+$isSetDept = isset($_GET['dept']);
 $output = '
 
-<div class="container">
+<div class="container">';
 
-	<p>'.$dept.' Department</p>
-
-	<form action="" method="post" class="d-flex">
-		<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-		<button class="btn btn-outline-success" type="submit">Search</button>
-	</form>
+	if($isSetDept)
+		$output .= ' <p> '.$dept.' Department</p> ';
+	else 
+		$output .= ' <p>Search Results : '.$search.'</p> ';     
 
 
+	if($isSetDept) {	//if department is clicked, show add new entry
+		//code for new entry form
+$output .= '
 <!-- NEW ENTRY FORM -->
 	<div class="add">
 		<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">+ Add Teacher</button>
@@ -93,11 +95,12 @@ $output .= '
 		</div>
 		</div>
 	</div>   
-<!-- END OF NEW ENTRY FORM-->
+<!-- END OF NEW ENTRY FORM--> 
+';
+}
 
-
-
-<!-- DISPLAY ALL FACULTY IN A TABLE -->
+$output .= '
+<!-- DISPLAY FACULTY IN A TABLE -->
 	<div class="table">
 	<table class="table table-hover">
 
@@ -113,9 +116,17 @@ $output .= '
 		<tbody> 
 ';
 
+	$query;
+	$result;
+	if($isSetDept) {
+		$query = $dept;
 		$result = retrieveAllId($pdo, 'teacher', 'dept', $dept);
-
-		foreach($result as $row) {
+	}
+	else {
+		$query = $search;
+		$result = searchName($pdo, 'teacher', $search);
+	}
+	foreach($result as $row) {
 
 $output .= '
 
@@ -141,7 +152,7 @@ $output .= '
 								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 							</div>
 								
-							<form action="teacher.php?search='.$dept.'" method="post">
+							<form action="teacher.php?search='.$query.'" method="post">
 							<div class="modal-body">
 
 									<!-- FIRST NAME INPUT -->
@@ -159,7 +170,7 @@ $output .= '
 								<div class="input-group input-group-sm mb-3">
 									<span class="input-group-text">Department</span>
 									<select name="dept">
-										<option value="'.$dept.'" selected>'.$dept.'</option>
+										<option value="'.$row['dept'].'" selected>'.$row['dept'].'</option>
 										<option value="Mathematics">Mathematics</option>
 										<option value="Science">Science</option>
 										<option value="English">English</option>
@@ -228,9 +239,14 @@ $output .= '
 
 						</div>
 						</div>
-					</div>   
+					</div>';
 
-					<form action="teacher.php?search='.$dept.'" method="post" style="display: inline;margin:0; padding:0">
+					if($isSetDept) 
+						$query = 'dept=' . $dept;
+					else 
+						$query = 'search=' . $search;
+$output .= '
+					<form action="teacher.php?'.$query.'" method="post" style="display: inline;margin:0; padding:0">
 						<input type="hidden" name="id" value="'.$row['id'].'">
 						<button type="submit" class="btn btn-danger" name="deleteEntry" value="deleteEntry">Remove</button>
 					</form>

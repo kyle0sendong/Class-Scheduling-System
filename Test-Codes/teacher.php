@@ -5,13 +5,19 @@ try {
     include __DIR__ . './includes/connection/DatabaseConnect.php';
     include __DIR__ . './includes/connection/DatabaseFunctions.php';
     
-
-
     //if view subjects, redirect
     
-    if(isset($_GET['search'])) {
+    if(isset($_GET['search']) || isset($_GET['dept'])) {
 
-        $dept = $_GET['search'];
+        $dept;
+        $search;
+
+        if(isset($_GET['dept']))
+            $dept = $_GET['dept'];
+        else 
+            $search = $_GET['search'];
+        
+        
         include __DIR__ . './includes/templates/teacher.html.php';
 
         //new teacher or update a teacher
@@ -45,16 +51,19 @@ try {
                 updateAdviser($pdo, $teachId, $teachAdvising);
             }
 
-            header('Location: teacher.php?search=' . $dept);
+            $dept = $_POST['dept']; //set the new 
+            header('Location: teacher.php?dept=' . $dept);
         }
 
-
-    
         if(isset($_POST['deleteEntry'])) {
+
             delete($pdo, 'teacher', $_POST['id']);
-            header('Location: teacher.php?search=' . $dept);
+
+            if(isset($_GET['dept']))
+                header('Location: teacher.php?dept=' . $dept);
+            else 
+                header('Location: teacher.php?search=' . $search);
         }
-        
     }
     
     
