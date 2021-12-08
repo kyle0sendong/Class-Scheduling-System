@@ -7,22 +7,15 @@
 .yellow { background: #FFFF00 }
 .gray   { background: #808080 }
 
-.sched{
-  position: absolute;
-  width: 200px;
-  left: 5%;
-  top: 11%;
-}
+
 .add-module{
-    padding: 0 20px;
-    position: absolute;
-    border-radius: 16px;
-    border-bottom: 2px solid silver;
-    height: 550px;
-    color: white;
-    background: #101820FF;
-    max-width: 900px;
-    width: 265px;
+  position: absolute;
+  border-bottom: 2px solid silver;
+  height: auto;
+  padding-bottom: 100px;
+  color: white;
+  background: #101820FF;
+  width: 300px;
 }
 .add-module h2{
     font-size: 23px;
@@ -31,27 +24,31 @@
     padding-bottom: 10px;
     padding-left: 35px;
 }
+
+.add-module h1{
+  font-size: 1em;
+  line-height: 1.5;
+  font-family: Arial, sans-serif;
+}
+
+
 select{
-    color: black;
-    font-size: 12px;
-    margin-left: 10px;
+  color: black;
+  font-size: 12px;
+  margin-left: 10px;
 }
 label{
-    font-size: 12px;
+  font-size: 12px;
 }
-h1{
-    font-size: 0.8em;
-    line-height: 2;
-    font-family: Arial, sans-serif;
-}
+
 .grade{
-    font-size: 10px;
+  font-size: 10px;
 }
+
 input{
     width: 100%;
     outline: none;
     border: none;
-    border-radius: 2px;
     padding: 0.75em;
     background: white;
     color: black;
@@ -61,7 +58,7 @@ input{
     height: 14px;
 }
   input[type="time"]{
-    font-size: 12px;
+    font-size: 14px;
     font-family: 'Lato', sans-serif;
   }
   input[type="submit"]{
@@ -80,44 +77,39 @@ input{
     color: black;
     transform: all 0.4s ease;
   }
-  .day-picker {
-    margin-bottom: 0.5em;
-    right: 36%;
-    bottom: 180px;
-  }
+
   .day-picker li {
-    font-size: 13px;
+    font-size: 12px;
+    font-weight: 1000;
     display: inline-block;
     background: white;
-    padding: 0 9px;
+    padding: 2px 1%;
     color: black;
     cursor: pointer;
-    width: calc(100% / 5 - 1.15em);
+    width: 15%;
     border: 1px solid;
+    border-radius: 35%;
     margin-right: -2px;
     transition: all 0.3s ease;
-    &:first-child { border-radius: 5px 0 0 5px; }
-    &:hover { color: white; position: relative; }
-    &:last-child { border-radius: 0 5px 5px 0; }
   }
+
   .day-picker li.day-selected {
     color: black;
     background: yellow;
     position: relative;
   }
+
+  
   .color-picker {
-    margin: 0 auto 0.2em;
-    text-align: left;
-    right: 37%;
-    bottom: 145px;
+
   }
+
   .color-picker li {
     display: inline-block;
-    width: 18px; 
-    height: 18px;
-    border-radius: 50%;
-    margin: 3px;
-    text-align: center;
+    width: 22px; 
+    height: 22px;
+    border-radius: 40%;
+    border: 1px solid grey;
     cursor: pointer;
     opacity: 0.7;
     transform: all 0.4s ease;
@@ -126,20 +118,15 @@ input{
     border: 2px solid white;
     opacity: 1;;
   }
+
+  
 footer {
   position: absolute;
   width: 100%;
   height: 48px;
   background: #aaa;
 }
-h3{
-    position: relative;
-    color: black;
-    text-align: center;
-    font-size: 22px;
-    top: 300px;
-    left: 30%;
-}
+
 table{
     position: relative;
     font-size: 15px;
@@ -192,10 +179,7 @@ input, textarea {
     font-family: arial;
     font-size: 13px;
 }
-input[type="checkbox"] {
-}
-input[type="radio"] {
-}
+
 .slider, .slider_navigation, .home_box_container_list, .items_list, .scrolling_list, .info_list, .simple_list, .blog, .comment_box, .post_footer_details, .image_carousel, .gallery_box .controls, .accordion, .contact_data, .footer_banner_box_container, .footer_contact_info_container, .social_icons, .columns, .column_left, .column_right, .column, .mc_gallery, .tabs_navigation, .gallery_item_details_list, .controls, .bread_crumb, .pagination, .widget_categories li, .photostream, .widget_archive ul, #comments_list ul, .mc_features, .thin_list, .top_info_list {
     list-style: outside none none;
     margin: 0;
@@ -375,9 +359,8 @@ input[type="radio"] {
     .schedule {
       display: grid;
       grid-gap: 1em;
-      position: absolute;
-      top: 70px;
-      right: 200px;
+      margin-top: 10%;
+      margin-left: 10%;
       grid-template-rows:
         [tracks] auto
         [time-0700] 1fr
@@ -474,13 +457,6 @@ input[type="radio"] {
     color: #fff;
     text-decoration-style: dotted;
     
-    &:hover {
-      font-style: italic;
-    }
-    
-    &:focus {
-      outline: 2px dotted rgba(255,255,255,.8);
-    }
   }
   
   .track-slot,
@@ -524,66 +500,17 @@ input[type="radio"] {
   }
   
   .text {
-    max-width: 900px;
-    font-size: 13px;
-    margin: 0 auto 50px;
-    top: 130px;
+    margin-left: 300px;
+    width:100%;
+    height: 100%;
   }
-  
-  .meta {
-    color: #555;
-    font-style: italic;
-  }
-  
-  .meta a {
-    color: #555;
-  }
-  
+
   hr {
-    margin: 40px 0;
+    margin: 10px 0;
   }
+
   button{
       font-size: 9px;
       position: relative;
   }
-  .btn{
-    position: relative;
-    background-color: DodgerBlue;
-    border: none;
-    color: white;
-    padding: 10px 16px;
-    font-size: 13px;
-    left: 1100px;
-    top: 560px;
-  }
-  /* Darker background on mouse-over */
-  .btn button, i:hover {
-    background-color: RoyalBlue;
-     transform: all 0.4s ease;
-    cursor: pointer;
-  }
-    .btn:active:after {
-    padding: 0;
-    margin: 0;
-    opacity: 1;
-    transition: 0s;
-  }
-.links{
-    position: fixed;
-    right: 40px;
-    bottom: 0px;
-    float: right;
-    letter-spacing: 6px;
-    cursor: pointer;
-    padding: 9px;
-    z-index: 1;
-    z-index: 999;
-    height: auto;
-}
-.links i{
-    text-decoration: none;
-}
-.links i:hover{
-    color: #ffff00;
-    transform: all 0.4s ease;
-}
+
