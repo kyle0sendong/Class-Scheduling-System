@@ -107,8 +107,7 @@ $output .= '
             $allLevels = retrieveAllId($pdo, 'grade_level', 'grade', $i);
         
             foreach($allLevels as $row) {
-                $adviser = retrieveId($pdo, 'adviser', 'gradesection_id', $row['id']);
-                $adviser = retrieveId($pdo, 'teacher', 'id', $adviser['teacher_id']);
+                $adviser = retrieveId($pdo, 'teacher', 'id', $row['adviser_id']);
                 $output .= '  
                 <td>'.$row['section'].'</td>
                 <td>0/8</td>
@@ -116,7 +115,10 @@ $output .= '
                 <td>'.$adviser['firstName']. ' '.$adviser['lastName'].'</td>
                 <td>
                     <link><a href="scheduler.php" target="_blank"><button type="button" class="btn btn-primary">Edit Schedule</button></a></link>
-                    <link><a href="#"><button type="button" class="btn btn-danger">Remove</button></a></link>
+                    <form action="schedules.php" method="post" style="display: inline;margin:0; padding:0">
+						<input type="hidden" name="id" value="'.$row['id'].'">
+						<button type="submit" class="btn btn-danger" name="deleteEntry" value="deleteEntry" style="font-size: 12px;">Remove</button>
+					</form>
                 </td>
             </tr>
             <tr>

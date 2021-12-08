@@ -14,6 +14,7 @@ try {
         $dept = $_GET['search'];
         include __DIR__ . './includes/templates/teacher.html.php';
 
+        //new teacher or update a teacher
         if(isset($_POST['firstName'])) {
 
             $teachFirstName = $_POST['firstName'];
@@ -50,7 +51,6 @@ try {
 
     
         if(isset($_POST['deleteEntry'])) {
-            
             delete($pdo, 'teacher', $_POST['id']);
             header('Location: teacher.php?search=' . $dept);
         }
@@ -67,9 +67,9 @@ include __DIR__ . './includes/templates/layout.html.php';
 
 function updateAdviser($pdo, $teacherId, $gradesectionId) {
 
-    update($pdo, 'adviser', 'gradesection_id', [
-        'teacher_id' => $teacherId,
-        'gradesection_id' => $gradesectionId
+    update($pdo, 'grade_level', 'id', [
+        'adviser_id' => $teacherId,
+        'id' => $gradesectionId
     ]);
 }
 
