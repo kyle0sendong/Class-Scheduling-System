@@ -3,14 +3,27 @@
 <?php 
 
 $isSetDept = isset($_GET['dept']);
+
 $output = '
+<div class="container"> 
+';
 
-<div class="container">';
-
-	if($isSetDept)
-		$output .= ' <p> '.$dept.' Department</p> ';
+	if($isSetDept)	//diffrent page header
+$output .= ' 
+	<p> '.$dept.' Department</p> 
+';
 	else 
-		$output .= ' <p>Search Results : '.$search.'</p> ';     
+$output .= ' 
+	<p>Search Results : '.$search.'</p> 
+';     
+
+$output .= '
+	<form action="teacher.php" method="get" class="d-flex" style="margin-left:70%;">
+		<input class="form-control me-2" type="text" name="search" placeholder="Faculty Name" aria-label="Search"> 
+		<button class="btn btn-outline-success" type="submit">Search</button>
+	</form>
+';
+
 
 
 	if($isSetDept) {	//if department is clicked, show add new entry
