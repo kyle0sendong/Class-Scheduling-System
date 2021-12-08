@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 07, 2021 at 01:03 AM
+-- Generation Time: Dec 08, 2021 at 12:43 PM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -24,52 +24,29 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `adviser`
---
-
-DROP TABLE IF EXISTS `adviser`;
-CREATE TABLE IF NOT EXISTS `adviser` (
-  `teacher_id` int(11) DEFAULT NULL,
-  `gradesection_id` int(11) DEFAULT NULL,
-  KEY `teacher id` (`teacher_id`),
-  KEY `gradesection id` (`gradesection_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `adviser`
---
-
-INSERT INTO `adviser` (`teacher_id`, `gradesection_id`) VALUES
-(81, 3),
-(82, 4),
-(69, 5),
-(83, 6),
-(81, 7);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `grade_level`
 --
 
 DROP TABLE IF EXISTS `grade_level`;
 CREATE TABLE IF NOT EXISTS `grade_level` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `adviser_id` int(11) DEFAULT NULL,
   `grade` varchar(32) NOT NULL,
   `section` varchar(32) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`grade`,`section`),
+  UNIQUE KEY `id` (`id`),
+  KEY `adviser` (`adviser_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `grade_level`
 --
 
-INSERT INTO `grade_level` (`id`, `grade`, `section`) VALUES
-(3, '7', 'A'),
-(4, '8', 'A'),
-(5, '9', 'A'),
-(6, '10', 'A'),
-(7, '7', 'B');
+INSERT INTO `grade_level` (`id`, `adviser_id`, `grade`, `section`) VALUES
+(16, 74, '10', 'A'),
+(12, 70, '7', 'A'),
+(15, 71, '7', 'C'),
+(14, 71, '7', 'G');
 
 -- --------------------------------------------------------
 
@@ -84,34 +61,29 @@ CREATE TABLE IF NOT EXISTS `teacher` (
   `lastName` varchar(32) NOT NULL,
   `dept` varchar(32) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `teacher`
 --
 
 INSERT INTO `teacher` (`id`, `firstName`, `lastName`, `dept`) VALUES
-(69, 'TBD', '-', ' -'),
-(74, 'asd', 'asd', 'Mathematics'),
-(76, 'asd', 'asda', 'Science'),
-(77, 'hjd', 'dyh', 'Science'),
-(78, 'd', 'd', 'Filipino'),
-(79, 'cc', 'cc', 'English'),
-(80, 'vvv', 'vvvv', 'AP'),
-(81, 'heyheyyyy', 'aaa', 'Mathematics'),
-(82, 'nice ', 'gumagana na', 'Science'),
-(83, 'after', 'so looooong', 'MAPEH');
+(69, 'TBD', '-', '-'),
+(70, 'Kyle', 'Destura', 'Mathematics'),
+(71, 'cas', 'dawedasd', 'English'),
+(72, 'Kylew', 'asd', 'English'),
+(74, 'czxc', 'asdzzz', 'Mathematics'),
+(80, 'Kyle', 'Destura', 'TLE');
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `adviser`
+-- Constraints for table `grade_level`
 --
-ALTER TABLE `adviser`
-  ADD CONSTRAINT `gradesection id` FOREIGN KEY (`gradesection_id`) REFERENCES `grade_level` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `teacher id` FOREIGN KEY (`teacher_id`) REFERENCES `teacher` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `grade_level`
+  ADD CONSTRAINT `adviser` FOREIGN KEY (`adviser_id`) REFERENCES `teacher` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
