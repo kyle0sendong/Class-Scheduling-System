@@ -14,38 +14,40 @@ try {
         $dept = $_GET['search'];
         include __DIR__ . './includes/templates/teacher.html.php';
 
-        if(isset($_POST['newEntry'])) {
-            
-            $parameters = [
-                'firstName' => $_POST['firstName'],
-                'lastName' => $_POST['lastName'],
-                'dept' => $_POST['dept'],
-            ];
-            
-            insert($pdo, 'teacher', $parameters);
+        if(isset($_POST['firstName'])) {
 
-            $last = $pdo->lastInsertId();
-        
-            update($pdo, 'adviser', 'gradesection_id', [
-                'gradesection_id' => $_POST['advising'],
-                'teacher_id' => $last
-            ]);
+            $teachFirstName = $_POST['firstName'];
+            $teachLastName = $_POST['lastName'];
+            $teachDept = $_POST['dept'];
+            $teachAdvising = $_POST['advising'];
+
+            $parameters = [
+                'firstName' => $teachFirstName,
+                'lastName' => $teachLastName,
+                'dept' => $teachDept,
+            ];
+
+            //if new entry
+            if(isset($_POST['newEntry'])) {
+
+                insert($pdo, 'teacher', $parameters);
+                $last = $pdo->lastInsertId();   //update adviser table
+                updateAdviser($pdo, $last, $teachAdvising);
+            }
+
+            //if update entry
+            if(isset($_POST['updateEntry'])) {
+                
+                $teachId = $_POST['id'];
+                $parameters['id'] = $teachId;
+                update($pdo, 'teacher', 'id', $parameters);
+                updateAdviser($pdo, $teachId, $teachAdvising);
+            }
 
             header('Location: teacher.php?search=' . $dept);
         }
-    
-        if(isset($_POST['updateEntry'])) {
 
-            $parameters = [
-                'id' => $_POST['id'],
-                'firstName' => $_POST['firstName'],
-                'lastName' => $_POST['lastName'],
-                'dept' => $_POST['dept']
-            ];
 
-            update($pdo, 'teacher', 'id', $parameters);
-            header('Location: teacher.php?search=' . $dept);
-        }
     
         if(isset($_POST['deleteEntry'])) {
             
@@ -62,6 +64,14 @@ try {
 
 include __DIR__ . './includes/templates/layout.html.php';
 
+
+function updateAdviser($pdo, $teacherId, $gradesectionId) {
+
+    update($pdo, 'adviser', 'gradesection_id', [
+        'teacher_id' => $teacherId,
+        'gradesection_id' => $gradesectionId
+    ]);
+}
 
 ?>
 

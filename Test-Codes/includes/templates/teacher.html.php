@@ -56,14 +56,14 @@ $output = '
 					<span class="input-group-text">Adviser of </span>
 					<select name="advising">					
 ';
-					//retrieve all grade and section
+					//retrieve grade and section for the form
 					for($i = 7; $i <= 10; $i++) {
 						$gradeLevel = retrieveAllId($pdo, 'grade_level', 'grade', $i);
 
-						foreach($gradeLevel as $row) {
+						foreach($gradeLevel as $gradeSection) {
 							$output .= '
-								<option value="'.$row['id'].'">
-								Grade '.$row['grade']. ' - ' . $row['section'] .'
+								<option value="'.$gradeSection['id'].'">
+								Grade '.$gradeSection['grade']. ' - ' . $gradeSection['section'] .'
 								</option>
 							';
 						}
@@ -130,30 +130,32 @@ $output .= '
 				
 				<button type="submit" class="btn btn-warning" name="updateEntry" value="updateEntry" data-bs-toggle="modal" data-bs-target="#a'.$row['id'].'">Edit</button>
 				
-				<!-- SHOW FORM WHEN edit IS CLICKED -->
+					<!-- SHOW FORM WHEN edit IS CLICKED -->
 				<div class="modal fade" id="a'.$row['id'].'" tabindex="-1" aria-labelledby="a'.$row['id'].'" aria-hidden="true">
 
 					<div class="modal-dialog">
 					<div class="modal-content">
-
+							<!-- HEADER -->
 						<div class="modal-header">
 							<h5 class="modal-title" id="a'.$row['id'].'">Edit Entry</h5>
 							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
-
+							
 						<form action="teacher.php?search='.$dept.'" method="post">
 						<div class="modal-body">
+
+								<!-- FIRST NAME INPUT -->
 							<div class="input-group input-group-sm mb-3">
 								<span class="input-group-text">First Name</span>
 								<input type="text" aria-label="First name" name="firstName" class="form-control" value="'.$row['firstName'].'" required><br>
 							</div>
-
+								<!-- LAST NAME INPUT -->
 							<div class="input-group input-group-sm mb-3">
 								<span class="input-group-text">Last name</span>
 								<input type="text" aria-label="Last name" name="lastName" class="form-control" value="'.$row['lastName'].'" required><br>
 							</div>
 
-							<!--Department option -->
+								<!--DEPARTMENT INPUT -->
 							<div class="input-group input-group-sm mb-3">
 								<span class="input-group-text">Department</span>
 								<select name="dept">
@@ -169,11 +171,26 @@ $output .= '
 								</select>
 							</div>
 
-							<!--Adviser of grade and section option-->
+								<!-- ADVISING SECTION FORM -->
 							<div class="input-group input-group-sm mb-3">
 								<span class="input-group-text">Adviser of </span>
-								<select name="">
-									
+								<select name="advising">
+';
+
+						//retrieve grade and section for the form
+						for($i = 7; $i <= 10; $i++) {
+							$gradeLevel = retrieveAllId($pdo, 'grade_level', 'grade', $i);
+
+							foreach($gradeLevel as $gradeSection) {
+								$output .= '
+									<option value="'.$gradeSection['id'].'">
+									Grade '.$gradeSection['grade']. ' - ' . $gradeSection['section'] .'
+									</option>
+								';
+							}
+						}
+
+$output .= '								
 								</select>
 							</div>
 
