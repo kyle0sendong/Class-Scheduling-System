@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="./includes/templates/css/sched.css">
+<link rel="stylesheet" type="text/css" href="./includes/templates/css/scheduler.css">
 
 <?php 
 
@@ -89,7 +89,7 @@ $output = '
 
 
 <div class="text">
-  <h2 id="schedule-heading">Conference Schedule</h2>
+  <h2 id="schedule-heading" style="margin-left: 15%; padding-top: 20px;"> Class Schedule</h2>
   <div class="schedule" aria-labelledby="schedule-heading">
     
     <span class="track-slot" aria-hidden="true" style="grid-column: track-1; grid-row: tracks;">Monday</span>
