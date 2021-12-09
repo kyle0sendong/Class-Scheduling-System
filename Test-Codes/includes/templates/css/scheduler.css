@@ -9,36 +9,31 @@
 
 
 .add-module{
-  position: absolute;
+  display:inline-block;
   border-bottom: 2px solid silver;
   height: auto;
   padding-bottom: 100px;
   color: white;
   background: #101820FF;
   width: 23%;
+  font-size: 15px;
 }
 .add-module h2{
-    font-size: 23px;
+    margin-top: 2%;
+    font-size: 25px;
     color: white;
-    padding-top: 15px;
-    padding-bottom: 10px;
-    padding-left: 35px;
+    text-align: center;
 }
 
 .add-module h1{
-  font-size: 1em;
+  font-size: 1.3em;
   line-height: 1.5;
   font-family: Arial, sans-serif;
+
 }
 
-
-select{
-  color: black;
-  font-size: 12px;
-  margin-left: 10px;
-}
-label{
-  font-size: 12px;
+.add-module select{
+  padding: 1%;
 }
 
 .grade{
@@ -62,6 +57,7 @@ input {
     font-size: 14px;
     font-family: 'Lato', sans-serif;
   }
+
   input[type="submit"]{
     background: #FFFF00;
     cursor: pointer;
@@ -74,61 +70,50 @@ input {
     width: 60%;
     margin-top: 30px;
   }
+
     input:hover{
     color: black;
     transform: all 0.4s ease;
   }
 
-  .day-picker li {
-    font-size: 12px;
-    font-weight: 1000;
-    display: inline-block;
-    background: white;
-    padding: 2px 1%;
-    color: black;
+
+  .day-picker {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 5%;;
+  }
+
+  .day-picker div {
+    margin: 5px 3px;
+  }
+
+  .day-picker div label{
     cursor: pointer;
-    width: 15%;
-    border: 1px solid;
+  }
+
+  .day-picker div label input[type="checkbox"] {
+    display: none;
+  }
+
+  .day-picker div label span {
+    display: inline-block;
+    padding: 6px 10px;
+    color: white;
     border-radius: 35%;
-    margin-right: -2px;
-    transition: all 0.3s ease;
+    font-size: 11px;
+    user-select: none;
+    overflow: hidden;
+    opacity: 0.9;
   }
 
-  .day-picker li.day-selected {
-    color: black;
-    background: yellow;
-    position: relative;
+  .day-picker div label input[type="checkbox"]:checked ~ span {
+    opacity: 1;
+    border: 1px solid;
   }
 
-  .color-picker li {
-    display: inline-block;
-    width: 22px; 
-    height: 22px;
-    border-radius: 40%;
-    border: 1px solid grey;
-    cursor: pointer;
-    opacity: 0.7;
-    transform: all 0.4s ease;
+  .add-module hr {
+    margin: 10px 10px;
   }
-  .color-picker li.color-selected {
-    border: 2px solid white;
-    opacity: 1;;
-  }
-
-  hr {
-    margin: 10px 0;
-  }
-
-  button{
-      font-size: 9px;
-      position: relative;
-  }
-
-
-
-
-
-
 
 
 
@@ -137,6 +122,7 @@ input {
  *************************/
 @media screen and (min-width:700px) {
     .schedule {
+      
       display: grid;
       grid-gap: 1em;
       margin-top: 2%;
@@ -175,9 +161,10 @@ input {
 
     
   .text {
-    margin-left: 20%;
-    width:75%;
+    display:inline-block;
+    width:70%;
     height: 100%;
+    
   }
 
   
@@ -244,7 +231,6 @@ input {
   .session-title a {
     color: #fff;
     text-decoration-style: dotted;
-    
   }
   
   .track-slot,
@@ -287,4 +273,51 @@ input {
     box-shadow: none;
   }
 
+/*DROP DOWN MENU ON GRADE AND SECTION*/
+/* link from source https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown*/
+.dropbtn {
+  background-color: white;
+  color: black;
+  padding: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
 
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #bfc8c9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  max-height:300px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
+}

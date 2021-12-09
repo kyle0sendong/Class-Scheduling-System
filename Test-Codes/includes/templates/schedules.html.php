@@ -11,7 +11,7 @@ $output = '
 
 <div class="schedules_container">
 
-    <div class="card" style="display:inline-block; height:45.5%; width: 25%; margin-left: 2%; margin-top: 2%;">
+    <div class="card" style="display:inline-block; border:none;height:50%; width: 25%; margin-left: 2%; margin-top: 2%;">
         <div class="card-header">
                 New Grade & Section
         </div>
