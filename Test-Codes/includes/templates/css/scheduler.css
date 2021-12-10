@@ -122,23 +122,32 @@ input {
  *************************/
 @media screen and (min-width:700px) {
     .schedule {
-      
+      height: 80%;
       display: grid;
-      grid-gap: 1em;
+      grid-gap: 5px;
       margin-top: 2%;
-      margin-left: 10%;
+      margin-left: 6%;
       grid-template-rows:
         [tracks] auto
-        [time-0700] 1fr
-        [time-0800] 1fr
-        [time-0900] 1fr
-        [time-1000] 1fr
-        [time-1100] 1fr
-        [time-1200] 1fr
-        [time-0100] 1fr
-        [time-0200] 1fr
-        [time-0300] 1fr
-        [time-0400] 1fr;
+        [time-0700] 8%
+        [time-0730] 4%
+        [time-0800] 8%
+        [time-0830] 4%
+        [time-0900] 8%
+        [time-0930] 4%
+        [time-1000] 8%
+        [time-1030] 4%
+        [time-1100] 8%
+        [time-1130] 4%
+        [time-1200] 8%
+        [time-1230] 4%
+        [time-0100] 8%
+        [time-0130] 4%
+        [time-0200] 8%
+        [time-0230] 4%
+        [time-0300] 8%
+        [time-0330] 4%
+        [time-0400] 8%;
 
         /* Note 1:
         Use 24hr time for gridline names for simplicity
@@ -154,15 +163,14 @@ input {
         [track-2-end track-3-start] 1fr
         [track-3-end track-4-start] 1fr
         [track-4-end track-5-start] 1fr
-        [track-5-end track-6-start] 1fr
-        [track-6-end];
+        [track-5-end];
     }
   }
 
     
   .text {
     display:inline-block;
-    width:70%;
+    width:75%;
     height: 100%;
     
   }
@@ -188,40 +196,42 @@ input {
       }
     }
   }
-  
-  /* Small-screen & fallback styles */
-  .session {
-    margin-bottom:  1em;
-  }
-  
-  @supports( display:grid ) {
-    @media screen and (min-width: 700px) {
-      .session {
-        margin: 0;
-      } 
-    }
-  }
+
   
   /*************************
    * VISUAL STYLES
    * Design-y stuff ot particularly important to the demo
    *************************/
   .session {
-    padding: .5em;
+    padding: 2%;
     border-radius: 2px;
     font-size: 12px;
     box-shadow:
       rgba(255,255,255,.6) 1px 1px 0,
-      rgba(0,0,0,.3) 4px 4px 0;
+      rgba(0,0,0,.3) 3px 3px 0;
   }
   
-  .session-title,
-  .session-time,
-  .session-track,
-  .session-presenter {
-    display: block;
+
+  .session-track {
+    margin: 6px 5px 0 2px;
   }
-  
+
+  .session-time {
+    display:flex; 
+    justify-content:space-between;
+    align-items:center;
+    height: 40%;
+    
+  }
+
+  .session-time button{
+    width:25px;
+    height:20px;
+    display:inline-flex;
+    align-items:center;
+    background: red;
+    color: white;
+  }
   .session-title,
   .time-slot {
     margin: 0;
@@ -263,6 +273,11 @@ input {
     background-color: #c35500;
     color: #fff;
   }
+
+  .track-6 {
+    background-color: black;
+    color: black;
+  }
   
   .track-all {
     display: flex;
@@ -272,6 +287,8 @@ input {
     color: #000;
     box-shadow: none;
   }
+
+
 
 /*DROP DOWN MENU ON GRADE AND SECTION*/
 /* link from source https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown*/
