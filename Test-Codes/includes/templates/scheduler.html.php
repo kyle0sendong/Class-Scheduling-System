@@ -6,7 +6,7 @@ $isSetGradeSection = isset($_GET['grade_section']);
 
 $output = '
 
-<!--ADD MODULE -->
+<!-----------------------------ADD MODULE --------------------------->
 <div style="display:flex;">
 <div class="add-module">
 <h2>Set Schedule</h2>
@@ -117,33 +117,33 @@ $output .= '
   <h1>Time and Duration</h1>
     <label for="start_time">Start Time</label>
 
-      <select name="hour" style="width:28%; margin: 0 0 0 6%;">
-          <option selected> 7 AM</option>
-          <option> 8 AM</option>
-          <option> 9 AM</option>
-          <option> 10 AM</option>
-          <option> 11 AM</option>
-          <option> 12 PM</option>
-          <option> 1 PM</option>
-          <option> 2 PM</option>
-          <option> 3 PM</option>
-          <option> 4 PM</option>
+      <select name="start_time" style="width:28%; margin: 0 0 0 6%;">
+          <option value="700" selected> 7 AM</option>
+          <option value="800"> 8 AM</option>
+          <option value="900"> 9 AM</option>
+          <option value="1000"> 10 AM</option>
+          <option value="1100"> 11 AM</option>
+          <option value="1200"> 12 PM</option>
+          <option value="1300"> 1 PM</option>
+          <option value="1400"> 2 PM</option>
+          <option value="1500"> 3 PM</option>
+          <option value="1600"> 4 PM</option>
       </select>
 
-      <select name="min" style="width:22%; margin: 0 0 0 6%;">
-        <option selected>00</option>
-        <option >30</option>
+      <select name="start_time_add" style="width:22%; margin: 0 0 0 6%;">
+        <option value="0" selected>00</option>
+        <option value="50">30</option>
       </select>
   </div>
 
   <div style="margin:5%">
     <label for="duration">Duration</label>
-      <select name="end_time" style="width:50%; margin: 0 0 0 10%;">
-        <option selected>1 Hr</option>
-        <option >1 Hr 30 Min</option>
-        <option >2 Hr</option>
-        <option >2 Hr 30 Min</option>
-        <option >3 Hrs</option>
+      <select name="duration" style="width:50%; margin: 0 0 0 10%;">
+        <option value="100" selected>1 Hr</option>
+        <option value="150">1 Hr 30 Min</option>
+        <option value="200">2 Hr</option>
+        <option value="250">2 Hr 30 Min</option>
+        <option value="300">3 Hr</option>
       </select>
     <hr>
   </div>  
@@ -153,35 +153,35 @@ $output .= '
     <div class="day-picker"> 
       <div>
         <label>
-          <input type="checkbox" name="mon"> 
+          <input type="checkbox" name="day[]" value="mon"> 
           <span style="background:#0075b6;">Mon</span>
           </label>
       </div>
 
       <div>
         <label>
-          <input type="checkbox" name="tue"> 
+          <input type="checkbox" name="day[]" value="tue"> 
           <span style="background: #008c9b;">Tue</span>
           </label>
       </div>
 
       <div>
         <label>
-          <input type="checkbox" name="wed"> 
+          <input type="checkbox" name="day[]" value="wed"> 
           <span style="background:#93388d;">Wed</span>
           </label>
       </div>
 
       <div>
         <label>
-        <input type="checkbox" name="thu"> 
+        <input type="checkbox" name="day[]" value="thu"> 
         <span style="background:#812438;">Thu</span>
         </label>
       </div>
 
       <div>
         <label>
-          <input type="checkbox" name="fri"> 
+          <input type="checkbox" name="day[]" value="fri"> 
           <span style="background:#80852e;">Fri</span>
           </label>
       </div>
@@ -193,40 +193,44 @@ $output .= '
 
 </form>
 </div>
+<!--------------------------- END OF ADD SCHEDULE ----------------------------->
 
-<!-- TIME TABLE -->
+
+<!------------------------- TIME TABLE ---------------------------->
 <div class="text">
   <h2 id="schedule-heading" style="margin-left: 15%; padding-top: 20px;"> Class Schedule</h2>
   <div class="schedule" aria-labelledby="schedule-heading">
     
-    <span class="track-slot" aria-hidden="true" style="grid-column: track-1; grid-row: tracks;">Monday</span>
-    <span class="track-slot" aria-hidden="true" style="grid-column: track-2; grid-row: tracks;">Tuesday</span>
-    <span class="track-slot" aria-hidden="true" style="grid-column: track-3; grid-row: tracks;">Wednesday</span>
-    <span class="track-slot" aria-hidden="true" style="grid-column: track-4; grid-row: tracks;">Thursday</span>
-    <span class="track-slot" aria-hidden="true" style="grid-column: track-5; grid-row: tracks;">Friday</span>
+    <span class="track-slot" aria-hidden="true" style="grid-column: mon; grid-row: tracks;">Monday</span>
+    <span class="track-slot" aria-hidden="true" style="grid-column: tue; grid-row: tracks;">Tuesday</span>
+    <span class="track-slot" aria-hidden="true" style="grid-column: wed; grid-row: tracks;">Wednesday</span>
+    <span class="track-slot" aria-hidden="true" style="grid-column: thu; grid-row: tracks;">Thursday</span>
+    <span class="track-slot" aria-hidden="true" style="grid-column: fri; grid-row: tracks;">Friday</span>
     
-    <h2 class="time-slot" style="grid-row: time-0700;">7:00am</h2>
-    <h2 class="time-slot" style="grid-row: time-0730;"></h2>
-    <h2 class="time-slot" style="grid-row: time-0800;">8:00am</h2>
-    <h2 class="time-slot" style="grid-row: time-0830;"></h2>
-    <h2 class="time-slot" style="grid-row: time-0900;">9:00am</h2>
-    <h2 class="time-slot" style="grid-row: time-0930;"</h2>
+    <h2 class="time-slot" style="grid-row: time-700;">7:00am</h2>
+    <h2 class="time-slot" style="grid-row: time-750;"></h2>
+    <h2 class="time-slot" style="grid-row: time-800;">8:00am</h2>
+    <h2 class="time-slot" style="grid-row: time-850;"></h2>
+    <h2 class="time-slot" style="grid-row: time-900;">9:00am</h2>
+    <h2 class="time-slot" style="grid-row: time-950;"</h2>
     <h2 class="time-slot" style="grid-row: time-1000;">10:00am</h2>
-    <h2 class="time-slot" style="grid-row: time-1030;"></h2>
+    <h2 class="time-slot" style="grid-row: time-1050;"></h2>
     <h2 class="time-slot" style="grid-row: time-1100;">11:00am</h2>
-    <h2 class="time-slot" style="grid-row: time-1130;"></h2>
+    <h2 class="time-slot" style="grid-row: time-1150;"></h2>
     <h2 class="time-slot" style="grid-row: time-1200;">12:00pm</h2>
-    <h2 class="time-slot" style="grid-row: time-1230;"></h2>
-    <h2 class="time-slot" style="grid-row: time-0100;">1:00pm</h2>
-    <h2 class="time-slot" style="grid-row: time-0130;"></h2>
-    <h2 class="time-slot" style="grid-row: time-0200;">2:00pm</h2>
-    <h2 class="time-slot" style="grid-row: time-0230;"></h2>
-    <h2 class="time-slot" style="grid-row: time-0300;">3:00pm</h2>
-    <h2 class="time-slot" style="grid-row: time-0330;"></h2>
-    <h2 class="time-slot" style="grid-row: time-0400;">4:00pm</h2>
-    
-    <div class="session track-1" style="grid-column: track-1; grid-row: time-0700 / time-0800;">
+    <h2 class="time-slot" style="grid-row: time-1250;"></h2>
+    <h2 class="time-slot" style="grid-row: time-1300;">1:00pm</h2>
+    <h2 class="time-slot" style="grid-row: time-1350;"></h2>
+    <h2 class="time-slot" style="grid-row: time-1400;">2:00pm</h2>
+    <h2 class="time-slot" style="grid-row: time-1450;"></h2>
+    <h2 class="time-slot" style="grid-row: time-1500;">3:00pm</h2>
+    <h2 class="time-slot" style="grid-row: time-1550;"></h2>
+    <h2 class="time-slot" style="grid-row: time-1600;">4:00pm</h2>
+    <h2 class="time-slot" style="grid-row: time-1650;"></h2>
+    <h2 class="time-slot" style="grid-row: time-1700;">5:00pm</h2>
 
+
+    <div class="session TLE" style="grid-column: mon; grid-row: time-700 / time-800;">
       <div class="session-time">
         <div>7:00 - 11:30 MAPEH</div>
         <div><button>X</button> </div>
@@ -236,7 +240,7 @@ $output .= '
       </div>
     </div>
 
-    <div class="session track-2" style="grid-column: track-2; grid-row: time-0700 / time-0830;">
+    <div class="session Science" style="grid-column: tue; grid-row: time-700 / time-850;">
       <div class="session-time">
         <div>7:00 - 11:30 MAPEH</div>
         <div><button>X</button> </div>
@@ -246,7 +250,7 @@ $output .= '
       </div>
     </div>
 
-    <div class="session track-3" style="grid-column: track-3; grid-row: time-0700 / time-0830;">
+    <div class="session English" style="grid-column: wed; grid-row: time-700 / time-1350;">
       <div class="session-time">
         <div>7:00 - 11:30 MAPEH</div>
         <div><button>X</button> </div>
@@ -256,7 +260,7 @@ $output .= '
       </div>
     </div>
 
-    <div class="session track-4" style="grid-column: track-4; grid-row: time-0700 / time-0830;">
+    <div class="session Filipino" style="grid-column: thu; grid-row: time-700 / time-1250;">
       <div class="session-time">
         <div>7:00 - 11:30 MAPEH</div>
         <div><button>X</button> </div>
@@ -266,7 +270,7 @@ $output .= '
       </div>
     </div>
 
-    <div class="session track-6" style="grid-column: track-5; grid-row: time-0700 / time-0830;">
+    <div class="session MAPEH" style="grid-column: fri; grid-row: time-700 / time-1250;">
       <div class="session-time">
         <div>7:00 - 11:30 MAPEH</div>
         <div><button>X</button> </div>

@@ -127,43 +127,38 @@ input {
       grid-gap: 5px;
       margin-top: 2%;
       margin-left: 6%;
-      grid-template-rows:
+      grid-template-rows:       /*30 minutes is represented as 0050 instead of 0030 because of decimal*/
         [tracks] auto
-        [time-0700] 8%
-        [time-0730] 4%
-        [time-0800] 8%
-        [time-0830] 4%
-        [time-0900] 8%
-        [time-0930] 4%
+        [time-700] 8%
+        [time-750] 4%
+        [time-800] 8%
+        [time-850] 4%
+        [time-900] 8%
+        [time-950] 4%
         [time-1000] 8%
-        [time-1030] 4%
+        [time-1050] 4%
         [time-1100] 8%
-        [time-1130] 4%
+        [time-1150] 4%
         [time-1200] 8%
-        [time-1230] 4%
-        [time-0100] 8%
-        [time-0130] 4%
-        [time-0200] 8%
-        [time-0230] 4%
-        [time-0300] 8%
-        [time-0330] 4%
-        [time-0400] 8%;
-
-        /* Note 1:
-        Use 24hr time for gridline names for simplicity
-  
-        Note 2: Use "auto" instead of "1fr" for a more compact schedule where height of a slot is not proportional to the session length. Implementing a "compact" shortcode attribute might make sense for this!
-        Try 0.5fr for more compact equal rows. I don't quite understand how that works :)
-        */
+        [time-1250] 4%
+        [time-1300] 8%
+        [time-1350] 4%
+        [time-1400] 8%
+        [time-1450] 4%
+        [time-1500] 8%
+        [time-1530] 4%
+        [time-1600] 8%
+        [time-1630] 4%
+        [time-1700] 8%;
       
       grid-template-columns:
         [times] 4em
-        [track-1-start] 1fr
-        [track-1-end track-2-start] 1fr
-        [track-2-end track-3-start] 1fr
-        [track-3-end track-4-start] 1fr
-        [track-4-end track-5-start] 1fr
-        [track-5-end];
+        [mon-start] 1fr
+        [mon-end tue-start] 1fr
+        [tue-end wed-start] 1fr
+        [wed-end thu-start] 1fr
+        [thu-end fri-start] 1fr
+        [fri-end];
     }
   }
 
@@ -209,6 +204,7 @@ input {
     box-shadow:
       rgba(255,255,255,.6) 1px 1px 0,
       rgba(0,0,0,.3) 3px 3px 0;
+      font-weight: 750;
   }
   
 
@@ -220,8 +216,6 @@ input {
     display:flex; 
     justify-content:space-between;
     align-items:center;
-    height: 40%;
-    
   }
 
   .session-time button{
@@ -249,33 +243,41 @@ input {
     font-size:.75em;
   }
   
-  .track-1 {
-    background-color: #1259B2;
-    color: #fff;
+  .Mathematics {
+    background-color: #e4d1d1;
+    color: black;
   }
   
-  .track-2 {
-    background-color: #687f00;
-    color: #fff;
+  .Science {
+    background-color: #b9b0b0;
+    color: black;
   }
   
-  .track-3 {
-    background-color: #544D69;
-    color: #fff;
+  .English {
+    background-color: #d9ecd0;
+    color: black;
   }
   
-  .track-4 {
-    background-color: red;
-    color: #fff;
+  .Filipino {
+    background-color: #77a8a8;
+    color: black;
   }
     
-  .track-5 {
-    background-color: #c35500;
-    color: #fff;
+  .MAPEH {
+    background-color: #f0efef;
+    color: black;
   }
 
-  .track-6 {
-    background-color: black;
+  .AP {
+    background-color: #ddeedd;
+    color: black;
+  }
+  .ESP {
+    background-color: #c2d4dd;
+    color: black;
+  }
+  .TLE {
+    background-color: #b0aac0;
     color: black;
   }
   
