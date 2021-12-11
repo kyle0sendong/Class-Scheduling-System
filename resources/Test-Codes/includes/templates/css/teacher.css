@@ -1,0 +1,39 @@
+.container{
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    font-size: 15px;
+    background: white;
+    outline: gray ;
+    height: 80%;
+    width: 80%;
+}
+.container p{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.table {
+    margin-top: 4%;
+}
+
+.table button{
+    font-size: 12px;
+}
+form{
+    width: 400px;
+    padding-right: 40px;
+}
+
+.add button{
+    position: absolute;
+    right: 10%;
+    margin-top: 1%;
+}
+.next-button{
+    font-size: 15px;
+    right: 8%;
+    top: 80px;
+}
+
+
