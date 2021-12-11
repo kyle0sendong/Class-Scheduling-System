@@ -83,6 +83,7 @@ function retrieveId($pdo, $table, $primaryKey, $value) {
     return $query->fetch();
 }
 
+
 //query 
 function query($pdo, $sql, $parameters = []) {
 

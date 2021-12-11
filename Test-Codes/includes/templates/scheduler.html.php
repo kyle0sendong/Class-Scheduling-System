@@ -2,14 +2,14 @@
 
 <?php 
 
-$isSetGradeSection = isset($_GET['grade_section']);
+
 
 $output = '
 
 <!-----------------------------ADD MODULE --------------------------->
 <div style="display:flex;">
 <div class="add-module">
-<h2>Set Schedule</h2>
+
 
 <!-- Retrieving grade and section -->
   <div style="margin:5%">
@@ -19,17 +19,19 @@ $output = '
 /* For display which grade and section is selected */
   $grade;
   $section;
-  if($isSetGradeSection) {
+  $displayGradeSection;
+  $isSetTemp = isset($_GET['grade_section']);
+  if($isSetTemp) {
     $grade = $_GET['grade_section'];
     $section = substr($grade, -1);
     $grade = substr_replace($grade ,"", -1);
-    $gradeSection = 'Grade ' . $grade . ' - ' . $section;
+    $displayGradeSection = 'Grade ' . $grade . ' - ' . $section;
   }
   else
-    $gradeSection = 'Select Grade and Section';
+    $displayGradeSection = 'Select Grade and Section';
   
 $output .= '
-    <button onclick="dropDown('.'\'grade_section\''.')" class="dropbtn">'.$gradeSection.'</button>
+    <button onclick="dropDown('.'\'grade_section\''.')" class="dropbtn">'.$displayGradeSection.'</button>
     <div id="grade_section" class="dropdown-content">
 ';
 
@@ -55,7 +57,7 @@ else
 
 /* For sending the current selected grade and section to the selected subject */
   $gradeSection;
-  if($isSetGradeSection) 
+  if($isSetTemp) 
     $gradeSection =  $_GET['grade_section'];
   else
     $gradeSection = ' ';
@@ -85,20 +87,37 @@ $output .= '
 ';
 
     /* Retrieve teacher by subject selected, data will be taken by what department they are in */
-    $allTeacher = retrieveAllId($pdo, 'teacher', 'dept', $subjectSelected);
-    $currentTeacher;  //if current teacher is already set
-    if(isset($_POST['teacher_id']))
-      $currentTeacher = $_POST['teacher_id'];
-    else
-      $currentTeacher = 'Select Teacher';
+    $teacherSelected;
+    $teacherName;
+    $isSetTemp = isset($_GET['grade_section']) && isset($_GET['subject']); 
+
+    if($isSetTemp) {
+      $temp = retrieveTwoId($pdo, 'class_schedule', 'grade_section', $_GET['grade_section'], 'subject', $_GET['subject']);
+        if(isset($temp['teacher_id'])) {
+          $teacherSelected = $temp['teacher_id'];
+          $teacherSelected = retrieveId($pdo, 'teacher', 'id', $teacherSelected);
+          $teacherId = $teacherSelected['id'];
+          $teacherName = $teacherSelected['firstName'] . ' ' . $teacherSelected['lastName'];
+        } else {
+          $teacherName = 'Select Teacher';
+          $teacherId = '';
+        }
+           
+    } else {
+      $teacherId = '';
+      $teacherName = 'Select Teacher';
+    }
 
 $output .= '
     <form action="scheduler.php" method="post">
     <label for="teacher">Available Teachers</label> <br>
       <select name="teacher" style="width:80%; margin: 2% 0 0 10%;" required>
-        <option value="" disabled selected>'.$currentTeacher.'</option>
+        <option value="'.$teacherId.'" selected>'.$teacherName.'</option>
 ';
-      //display all the teacher as option
+    if($isSetTemp) {
+      if($teacherName == 'Select Teacher') {
+        $allTeacher = retrieveAllId($pdo, 'teacher', 'dept', $_GET['subject']);
+        //display all the teacher as option
         foreach($allTeacher as $teacher) {
           $id = $teacher['id'];
           $firstName = $teacher['firstName'];
@@ -106,12 +125,56 @@ $output .= '
           $fullName = $firstName . ' ' . $lastName;
           $output .= '<option value="'.$id.'">'.$fullName.'</option> ';
         }
+      }
+    }
+
 
 $output .= '
+
       </select>
     <hr>
   </div>
 
+  <div style="margin:5%; width:100%;">
+  <h1>Day</h1>
+    <div class="day-picker"> 
+      <div>
+        <label>
+          <input type="checkbox" name="day[]" value="mon"> 
+          <span style="background:grey;">Mon</span>
+          </label>
+      </div>
+
+      <div>
+        <label>
+          <input type="checkbox" name="day[]" value="tue"> 
+          <span style="background: #008c9b;">Tue</span>
+          </label>
+      </div>
+
+      <div>
+        <label>
+          <input type="checkbox" name="day[]" value="wed"> 
+          <span style="background:#93388d;">Wed</span>
+          </label>
+      </div>
+
+      <div>
+        <label>
+        <input type="checkbox" name="day[]" value="thu"> 
+        <span style="background:#812438;">Thu</span>
+        </label>
+      </div>
+
+      <div>
+        <label>
+          <input type="checkbox" name="day[]" value="fri"> 
+          <span style="background:#80852e;">Fri</span>
+          </label>
+      </div>
+
+    </div>
+  </div>
 
   <div style="margin:5%">
   <h1>Time and Duration</h1>
@@ -148,46 +211,7 @@ $output .= '
     <hr>
   </div>  
 
-  <div style="margin:5%; width:100%;">
-  <h1>Day</h1>
-    <div class="day-picker"> 
-      <div>
-        <label>
-          <input type="checkbox" name="day[]" value="mon"> 
-          <span style="background:#0075b6;">Mon</span>
-          </label>
-      </div>
-
-      <div>
-        <label>
-          <input type="checkbox" name="day[]" value="tue"> 
-          <span style="background: #008c9b;">Tue</span>
-          </label>
-      </div>
-
-      <div>
-        <label>
-          <input type="checkbox" name="day[]" value="wed"> 
-          <span style="background:#93388d;">Wed</span>
-          </label>
-      </div>
-
-      <div>
-        <label>
-        <input type="checkbox" name="day[]" value="thu"> 
-        <span style="background:#812438;">Thu</span>
-        </label>
-      </div>
-
-      <div>
-        <label>
-          <input type="checkbox" name="day[]" value="fri"> 
-          <span style="background:#80852e;">Fri</span>
-          </label>
-      </div>
-
-    </div>
-  </div>
+  
   <input type="hidden" name="grade_section" value="'.$gradeSection.'">
   <input type="hidden" name="subject" value="'.$subjectSelected.'">
   <input type="submit" name="saveSchedule" value="Save Schedule">
@@ -200,7 +224,7 @@ $output .= '
 $output .= '
 <!------------------------- TIME TABLE ---------------------------->
 <div class="text">
-  <h2 id="schedule-heading" style="margin-left: 15%; padding-top: 20px;"> Class Schedule</h2>
+  <h2 id="schedule-heading" style="margin-left: 15%; padding-top: 20px;">'.$displayGradeSection.'</h2>
   <div class="schedule" aria-labelledby="schedule-heading">
     
     <span class="track-slot" aria-hidden="true" style="grid-column: mon; grid-row: tracks;">Monday</span>
@@ -246,7 +270,15 @@ $output .= '
 $output .= '<div class="session '.$schedSubject.'" style="grid-column: '.$schedDay.'; grid-row: time-'.$schedStart.' / time-'.$schedEnd.';">
               <div class="session-time">
                 <div>'.convertTime($schedStart).' - '.convertTime($schedEnd) . ' ' . convertSubject($schedSubject).'</div>
-                <div><button>X</button> </div>
+                <div> 
+                  <form action="scheduler.php" method="post" style="display:inline-block; margin:0; padding:0;">
+                    <input type="hidden" name="teacher_id" value="'.$teacher['id'].'">
+                    <input type="hidden" name="grade_section" value="'.$gradeSection.'">
+                    <input type="hidden" name="duration" value="'.$sched['duration'].'">
+                    <button type="submit" name="deleteSchedule" value="'.$sched['id'].'">X</button> 
+                  </form>
+                </div>
+
               </div>
               <div class="session-track">
                 <div>'.$schedTeacher.'</div>
@@ -261,50 +293,6 @@ $output .= '
 
 ';
 
-
-function convertSubject($subject) {
-  if($subject == 'Mathematics')
-    return 'Math';
-  if($subject == 'Filipino')
-    return 'Fil';
-    return $subject;
-
-}
-
-function convertTime($time) {
-  
-  if($time % 100 == 0) {  //if it has no 30 minute time
-    $time = $time/100;
-    $stringTime;
-
-    if($time > 12) {  //if it is an afternoon class
-      
-      $stringTime = ($time - 12) . ':00';
-      return $stringTime;
-    } else {
-
-      $stringTime = $time . ':00';
-      return $stringTime;
-    }
-
-  } else { //if it has a 30 minute time
-
-    $stringTime;
-    $time = $time/100;
-    $time = $time - 0.5;
-
-    if($time > 12) {  //if it is an afternoon class
-      
-      $stringTime = ($time - 12) . ':30';
-      return $stringTime;
-    } else {
-
-      $stringTime = $time . ':30';
-      return $stringTime;
-    }
-
-  }
-}
 ?>
 
 <script src="./includes/templates/script/gradeSectionDrop.js"> </script>

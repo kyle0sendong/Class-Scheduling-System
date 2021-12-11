@@ -146,9 +146,9 @@ input {
         [time-1400] 8%
         [time-1450] 4%
         [time-1500] 8%
-        [time-1530] 4%
+        [time-1550] 4%
         [time-1600] 8%
-        [time-1630] 4%
+        [time-1650] 4%
         [time-1700] 8%;
       
       grid-template-columns:
@@ -209,7 +209,7 @@ input {
   
 
   .session-track {
-    margin: 6px 5px 0 2px;
+    margin: 2px 5px 0 2px;
   }
 
   .session-time {

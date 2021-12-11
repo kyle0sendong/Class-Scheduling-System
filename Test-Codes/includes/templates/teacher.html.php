@@ -122,7 +122,7 @@ $output .= '
 				<th scope="col">First </th>
 				<th scope="col">Last</th>
 				<th scope="col">Department</th>
-				<th scope="col">Teaching Hours</th>
+				<th scope="col">Workload</th>
 			</tr>
 		</thead>
 
@@ -147,7 +147,7 @@ $output .= '
 				<td> '.$row['firstName'].' </td>
 				<td> '.$row['lastName'].' </td>
 				<td> '.$row['dept'].' </td>
-				<td> 1 </td>
+				<td> '.$row['workload'].' Hour/s </td>
 
 				<td>
 					<button type="button" class="btn btn-primary">View Schedule</button>
