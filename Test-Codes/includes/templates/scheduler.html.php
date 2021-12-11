@@ -36,10 +36,10 @@ $output .= '
     //retrieve grade and section and show them as clickable links
     for($i = 7; $i <= 10; $i++) {
       $gradeLevel = retrieveAllId($pdo, 'grade_level', 'grade', $i);
-      foreach($gradeLevel as $gradeSection) {
+      foreach($gradeLevel as $row) {
         $output .= '
-          <a href="scheduler.php?grade_section='.$gradeSection['grade'].$gradeSection['section'].'">
-          Grade '.$gradeSection['grade'].' - ' .$gradeSection['section'].' </a>
+          <a href="scheduler.php?grade_section='.$row['grade'].$row['section'].'">
+          Grade '.$row['grade'].' - ' .$row['section'].' </a>
         ';
       }
     }
@@ -90,13 +90,13 @@ $output .= '
     if(isset($_POST['teacher_id']))
       $currentTeacher = $_POST['teacher_id'];
     else
-      $currentTeacher = 'TBD';
+      $currentTeacher = 'Select Teacher';
 
 $output .= '
     <form action="scheduler.php" method="post">
     <label for="teacher">Available Teachers</label> <br>
-      <select name="subject" style="width:80%; margin: 2% 0 0 10%;">
-        <option>'.$currentTeacher.'</option>
+      <select name="teacher" style="width:80%; margin: 2% 0 0 10%;" required>
+        <option value="" disabled selected>'.$currentTeacher.'</option>
 ';
       //display all the teacher as option
         foreach($allTeacher as $teacher) {
@@ -188,14 +188,16 @@ $output .= '
 
     </div>
   </div>
-
-  <input type="submit" name="newSchedule" value="Add Schedule">
-
+  <input type="hidden" name="grade_section" value="'.$gradeSection.'">
+  <input type="hidden" name="subject" value="'.$subjectSelected.'">
+  <input type="submit" name="saveSchedule" value="Save Schedule">
 </form>
+
 </div>
-<!--------------------------- END OF ADD SCHEDULE ----------------------------->
+<!--------------------------- END OF ADD SCHEDULE -----------------------------> ';
 
 
+$output .= '
 <!------------------------- TIME TABLE ---------------------------->
 <div class="text">
   <h2 id="schedule-heading" style="margin-left: 15%; padding-top: 20px;"> Class Schedule</h2>
@@ -227,66 +229,82 @@ $output .= '
     <h2 class="time-slot" style="grid-row: time-1550;"></h2>
     <h2 class="time-slot" style="grid-row: time-1600;">4:00pm</h2>
     <h2 class="time-slot" style="grid-row: time-1650;"></h2>
-    <h2 class="time-slot" style="grid-row: time-1700;">5:00pm</h2>
+    <h2 class="time-slot" style="grid-row: time-1700;">5:00pm</h2> 
+  ';
 
+  //For retrieving all data from the grade and section selected (will be displayed later)
+  $grade_section_sched = retrieveAllId($pdo, 'class_schedule', 'grade_section', $gradeSection);
 
-    <div class="session TLE" style="grid-column: mon; grid-row: time-700 / time-800;">
-      <div class="session-time">
-        <div>7:00 - 11:30 MAPEH</div>
-        <div><button>X</button> </div>
-      </div>
-      <div class="session-track">
-        <div>Anneeeeee Cruzasdasd </div>
-      </div>
-    </div>
+    foreach($grade_section_sched as $sched) {
+      $teacher = retrieveId($pdo, 'teacher', 'id', $sched['teacher_id']);
+      $schedDay = $sched['day'];
+      $schedStart = $sched['start_time'];
+      $schedEnd = $sched['end_time'];
+      $schedSubject = $sched['subject'];
+      $schedTeacher = $teacher['firstName'] . ' ' . $teacher['lastName'];
 
-    <div class="session Science" style="grid-column: tue; grid-row: time-700 / time-850;">
-      <div class="session-time">
-        <div>7:00 - 11:30 MAPEH</div>
-        <div><button>X</button> </div>
-      </div>
-      <div class="session-track">
-        <div>Anneeeeee Cruzasdasd </div>
-      </div>
-    </div>
-
-    <div class="session English" style="grid-column: wed; grid-row: time-700 / time-1350;">
-      <div class="session-time">
-        <div>7:00 - 11:30 MAPEH</div>
-        <div><button>X</button> </div>
-      </div>
-      <div class="session-track">
-        <div>Anneeeeee Cruzasdasd </div>
-      </div>
-    </div>
-
-    <div class="session Filipino" style="grid-column: thu; grid-row: time-700 / time-1250;">
-      <div class="session-time">
-        <div>7:00 - 11:30 MAPEH</div>
-        <div><button>X</button> </div>
-      </div>
-      <div class="session-track">
-        <div>Anneeeeee Cruzasdasd </div>
-      </div>
-    </div>
-
-    <div class="session MAPEH" style="grid-column: fri; grid-row: time-700 / time-1250;">
-      <div class="session-time">
-        <div>7:00 - 11:30 MAPEH</div>
-        <div><button>X</button> </div>
-      </div>
-      <div class="session-track">
-        <div>Anneeeeee Cruzasdasd </div>
-      </div>
-    </div>
-
-    
+$output .= '<div class="session '.$schedSubject.'" style="grid-column: '.$schedDay.'; grid-row: time-'.$schedStart.' / time-'.$schedEnd.';">
+              <div class="session-time">
+                <div>'.convertTime($schedStart).' - '.convertTime($schedEnd) . ' ' . convertSubject($schedSubject).'</div>
+                <div><button>X</button> </div>
+              </div>
+              <div class="session-track">
+                <div>'.$schedTeacher.'</div>
+              </div>
+            </div>
+      ';
+    }
+$output .= '
   </div>
 </div>
 
 
 ';
 
+
+function convertSubject($subject) {
+  if($subject == 'Mathematics')
+    return 'Math';
+  if($subject == 'Filipino')
+    return 'Fil';
+    return $subject;
+
+}
+
+function convertTime($time) {
+  
+  if($time % 100 == 0) {  //if it has no 30 minute time
+    $time = $time/100;
+    $stringTime;
+
+    if($time > 12) {  //if it is an afternoon class
+      
+      $stringTime = ($time - 12) . ':00';
+      return $stringTime;
+    } else {
+
+      $stringTime = $time . ':00';
+      return $stringTime;
+    }
+
+  } else { //if it has a 30 minute time
+
+    $stringTime;
+    $time = $time/100;
+    $time = $time - 0.5;
+
+    if($time > 12) {  //if it is an afternoon class
+      
+      $stringTime = ($time - 12) . ':30';
+      return $stringTime;
+    } else {
+
+      $stringTime = $time . ':30';
+      return $stringTime;
+    }
+
+  }
+}
 ?>
 
 <script src="./includes/templates/script/gradeSectionDrop.js"> </script>
