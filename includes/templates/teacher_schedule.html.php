@@ -2,7 +2,6 @@
 
 <?php 
 
-
 /*     DISPLAY TIME TABLE     */ 
 $output .= '
 <div class="text">

@@ -8,15 +8,14 @@ try {
     if(isset($_POST['deleteSchedule'])) {
         $id = $_POST['deleteSchedule'];
         $teacher_id = $_POST['teacher_id'];
-        $grade_section = $_POST['grade_section'];
         $duration = $_POST['duration'];
         
         delete($pdo, 'class_schedule', $_POST['deleteSchedule']);
         updateTeacherWorkload($pdo, 'delete', $teacher_id, $duration);
-        header('Location: scheduler.php?grade_section=' . $grade_section);
+        header('Location: teacher_schedule.php?id=' . $teacher_id);
     }
     
-    include __DIR__ . './includes/templates/scheduler.html.php';
+    include __DIR__ . './includes/templates/teacher_schedule.html.php';
     
 } catch (PDOException $e) {
     include __DIR__ . './includes/connection/displayError.php';

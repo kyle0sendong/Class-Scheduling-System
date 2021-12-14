@@ -154,7 +154,7 @@ $output .= '
 				<td> '.$row['workload'].' Hour/s </td>
 
 				<td>
-					<a class ="btn btn-primary" href="teacher.php">View Schedule</a>
+					<a class ="btn btn-primary" href="teacher_schedule.php?teacherId='.$row['id'].'">View Schedule</a>
 					
 					<button type="submit" class="btn btn-warning" name="updateEntry" value="updateEntry" data-bs-toggle="modal" data-bs-target="#a'.$row['id'].'">Edit</button>
 					
