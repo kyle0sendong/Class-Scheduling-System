@@ -1,11 +1,13 @@
 <link rel="stylesheet" type="text/css" href="./includes/templates/css/scheduler.css">
 
 <?php 
-
+    $teacher_id = $_GET['id'];
+    $teacher = retrieveId($pdo, 'teacher', 'id', $teacher_id);
+    $teacherName = $teacher['firstName'] . ' ' . $teacher['lastName'];
 /*     DISPLAY TIME TABLE     */ 
-$output .= '
-<div class="text">
-  <h2 id="schedule-heading" style="margin-left: 15%; padding-top: 20px;">Teacher name</h2>
+$output = '
+<div class="text" style="height: 400px; width: 800px; margin-left: 5%;">
+  <h2 id="schedule-heading" style="margin-left: 15%; padding-top: 20px;">'.$teacherName.' Schedule</h2>
   <div class="schedule" aria-labelledby="schedule-heading">
     
     <span class="track-slot" aria-hidden="true" style="grid-column: mon; grid-row: tracks;">Monday</span>
@@ -37,34 +39,30 @@ $output .= '
     <h2 class="time-slot" style="grid-row: time-1700;">5:00pm</h2> 
 ';
 
+
   //For retrieving all data from the grade and section selected (will be displayed later)
-  $grade_section_sched = retrieveAllId($pdo, 'class_schedule', 'grade_section', $gradeSection);
+    $teacher_sched = retrieveAllId($pdo, 'class_schedule', 'teacher_id', $teacher_id);
+    $teacher_sched_exist = true;
 
-  foreach($grade_section_sched as $sched) {
+    if(!isset($teacher_sched_exist))
+        $teacher_sched_exist = false;
+    
+    foreach($teacher_sched as $sched) {
+        
+        $schedDay = $sched['day'];
+        $schedStart = $sched['start_time'];
+        $schedEnd = $sched['end_time'];
+        $schedSection = $sched['grade_section'];
 
-    $output .= '
+        $output .= '
 
-    <div class="session " style="grid-column: mon; grid-row: time-700 / time-900;">
-        <div class="session-time">
-            <div>'.convertTime($schedStart).' - '.convertTime($schedEnd) . ' ' . convertSubject($schedSubject).'</div>
-
-            <!-- FORM FOR THE DELETE BUTTON -->
-            <div> 
-            <form action="scheduler.php" method="post" style="display:inline-block; margin:0; padding:0;">
-                <input type="hidden" name="teacher_id" value="'.$teacher['id'].'">
-                <input type="hidden" name="grade_section" value="'.$gradeSection.'">
-                <input type="hidden" name="duration" value="'.$sched['duration'].'">
-                <button type="submit" name="deleteSchedule" value="'.$sched['id'].'">X</button> 
-            </form>
+        <div class="session Mathematics" style="grid-column: '.$schedDay.'; grid-row: time-'.$schedStart.' / time-'.$schedEnd.';">
+            <div class="session-time">
+                <div>'.convertTime($schedStart).' - '.convertTime($schedEnd) . ' ' . $schedSection.'</div>
             </div>
         </div>
-
-        <div class="session-track">
-            <div>'.$schedTeacher.'</div>
-        </div>
-    </div>
-    ';
-  }
+        ';
+    }
 
   $output .= '
   </div>
