@@ -26,7 +26,7 @@ $output .= '
 
 
 
-	if($isSetDept) {	//if department is clicked, show add new entry
+if($isSetDept) {	//if department is clicked, show add new entry
 		//code for new entry form
 $output .= '
 <!-- NEW ENTRY FORM -->
@@ -108,14 +108,16 @@ $output .= '
 		</div>
 		</div>
 	</div>   
-<!-- END OF NEW ENTRY FORM--> 
+
 ';
 }
+/* END OF NEW ENTRY FORM */
 
 
 
+/* DISPLAY ALL TEACHERS IN A TABLE */
 $output .= '
-<!-- DISPLAY FACULTY IN A TABLE -->
+
 	<div class="table">
 	<table class="table table-hover">
 
@@ -152,7 +154,7 @@ $output .= '
 				<td> '.$row['workload'].' Hour/s </td>
 
 				<td>
-					<button type="button" class="btn btn-primary">View Schedule</button>
+					<a class ="btn btn-primary" href="teacher.php">View Schedule</a>
 					
 					<button type="submit" class="btn btn-warning" name="updateEntry" value="updateEntry" data-bs-toggle="modal" data-bs-target="#a'.$row['id'].'">Edit</button>
 					
@@ -219,8 +221,6 @@ $output .= '
 									</option>
 								';
 							}
-
-
 
 							//retrieve grade and section for the form
 							for($i = 7; $i <= 10; $i++) {
@@ -299,27 +299,5 @@ $output .= '
 
 ';
 
-
-
-
-/* 
-modal 
-
-
-<div class="input-group input-group-sm mb-3">
-	<span class="input-group-text">Department</span>
-	<select name="dept">
-		<option value="Mathematics">Mathematics</option>
-		<option value="Science">Science</option>
-		<option value="English">English</option>
-		<option value="Filipino">Filipino</option>
-		<option value="MAPEH">MAPEH</option>
-		<option value="AP">AP</option>
-		<option value="ESP">ESP</option>
-		<option value="TLE">TLE</option>
-	</select>
-</div>
-
-*/
 ?>
 
