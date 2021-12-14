@@ -17,7 +17,7 @@
   /* For display which grade and section is selected */
   $displayGradeSection;
 
-  if($isset($_GET['grade_section'])) {
+  if(isset($_GET['grade_section'])) {
     $grade = $_GET['grade_section'];
     $section = substr($grade, -1);
     $grade = substr_replace($grade ,"", -1);
