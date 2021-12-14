@@ -93,7 +93,7 @@ for ($i = 7; $i <= 10; $i++) {
     <div class="table1">
     <table>
         <h5><b>Grade '.$i.'</b></h3>
-        <thead style="border-bottom: solid #000;border-bottom-width: 2px;"> 
+        <thead> 
             <tr>
                 <th style="text-align: center;">Section</th>
                 <th style="text-align: center;">Subjects Filled</th>
@@ -126,10 +126,10 @@ for ($i = 7; $i <= 10; $i++) {
         
         $output .= '
                 <td>
-                    <link><a href="scheduler.php?grade_section='.$row['grade'].$row['section'].'" target="_blank"><button type="button" class="btn btn-primary">Edit Schedule</button></a></link>
+                    <a href="scheduler.php?grade_section='.$row['grade'].$row['section'].'" class="btn btn-primary target="_blank">Edit Schedule</a>
                     <form action="schedules.php" method="post" style="display: inline;margin:0; padding:0">
                         <input type="hidden" name="id" value="'.$row['id'].'">
-                        <button type="submit" class="btn btn-danger" name="deleteEntry" value="deleteEntry" style="font-size: 12px;">Remove</button>
+                        <button type="submit" class="btn btn-danger" name="deleteEntry" value="deleteEntry">X</button>
                     </form>
                 </td>
             </tr>

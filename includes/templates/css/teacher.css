@@ -17,9 +17,14 @@
     margin-top: 4%;
 }
 
+.table a {
+    font-size: 11px;
+}
+
 .table button{
     font-size: 12px;
 }
+
 form{
     width: 400px;
     padding-right: 40px;

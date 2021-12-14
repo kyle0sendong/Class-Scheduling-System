@@ -18,6 +18,7 @@
   $displayGradeSection;
 
   if(isset($_GET['grade_section'])) {
+
     $grade = $_GET['grade_section'];
     $section = substr($grade, -1);
     $grade = substr_replace($grade ,"", -1);
@@ -87,19 +88,23 @@
   $teacherId;
 
   if( isset($_GET['grade_section']) && isset($_GET['subject']) ) {
+
     $temp = retrieveTwoId($pdo, 'class_schedule', 'grade_section', $_GET['grade_section'], 'subject', $_GET['subject']);
       
       if(isset($temp['teacher_id'])) {
+
         $teacherSelected = $temp['teacher_id'];
         $teacherSelected = retrieveId($pdo, 'teacher', 'id', $teacherSelected);
         $teacherId = $teacherSelected['id'];
         $teacherName = $teacherSelected['firstName'] . ' ' . $teacherSelected['lastName'];
       } else {
+
         $teacherName = 'Select Teacher';
         $teacherId = '';
       }
 
   } else {
+
     $teacherId = '';
     $teacherName = 'Select Teacher';
   }
@@ -118,6 +123,7 @@
       $allTeacher = retrieveAllId($pdo, 'teacher', 'dept', $_GET['subject']);
       
       foreach($allTeacher as $teacher) { //display all the teacher as option
+
         $id = $teacher['id'];
         $firstName = $teacher['firstName'];
         $lastName = $teacher['lastName'];
@@ -227,7 +233,10 @@
 /*     DISPLAY TIME TABLE     */
   $output .= '
 <div class="text">
-  <h2 id="schedule-heading" style="margin-left: 15%; padding-top: 20px;">'.$displayGradeSection.'</h2>
+  <div class="text-wrapper">
+    <span class="text-header">'.$displayGradeSection.'</span> 
+    <span class="total-hours"> asdlkajskd</span>
+  </div>
   <div class="schedule" aria-labelledby="schedule-heading">
     
     <span class="track-slot" aria-hidden="true" style="grid-column: mon; grid-row: tracks;">Monday</span>
@@ -263,6 +272,7 @@
   $grade_section_sched = retrieveAllId($pdo, 'class_schedule', 'grade_section', $gradeSection);
 
   foreach($grade_section_sched as $sched) {
+    
     $teacher = retrieveId($pdo, 'teacher', 'id', $sched['teacher_id']);
     $schedDay = $sched['day'];
     $schedStart = $sched['start_time'];
