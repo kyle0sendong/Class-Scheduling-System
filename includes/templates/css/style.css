@@ -21,7 +21,7 @@ main {
     background: #101820FF;
     height: auto;
     padding: 10px;
-    width: 100vw;
+    width: 100%;
     display: flex;
     align-items: center;
     font-size: 1.2rem;
@@ -82,7 +82,7 @@ ul li a:hover{
 .buttons{
     border: none;
     color: white;
-    padding: 0px 2px;
+ 
     top: 20%;
     left: 16%;
     text-decoration: none;
