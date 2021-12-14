@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 14, 2021 at 02:13 AM
+-- Generation Time: Dec 14, 2021 at 12:52 PM
 -- Server version: 8.0.27
 -- PHP Version: 7.4.26
 
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `class_schedule` (
   `id` int NOT NULL AUTO_INCREMENT,
   UNIQUE KEY `id` (`id`),
   KEY `teacher` (`teacher_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `class_schedule`
