@@ -126,7 +126,7 @@ for ($i = 7; $i <= 10; $i++) {
         
         $output .= '
                 <td>
-                    <link><a href="scheduler.php" target="_blank"><button type="button" class="btn btn-primary">Edit Schedule</button></a></link>
+                    <link><a href="scheduler.php?grade_section='.$row['grade'].$row['section'].'" target="_blank"><button type="button" class="btn btn-primary">Edit Schedule</button></a></link>
                     <form action="schedules.php" method="post" style="display: inline;margin:0; padding:0">
                         <input type="hidden" name="id" value="'.$row['id'].'">
                         <button type="submit" class="btn btn-danger" name="deleteEntry" value="deleteEntry" style="font-size: 12px;">Remove</button>
