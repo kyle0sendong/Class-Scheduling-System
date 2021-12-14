@@ -70,7 +70,7 @@ $output .= '
 				<div class="input-group input-group-sm mb-3">
 					<span class="input-group-text">Adviser of </span>
 					<select name="advising">
-					<option value="69">None</option>					
+					<option disable selected>Select Grade & Section</option>					
 ';
 					//retrieve grade and section for the form
 					for($i = 7; $i <= 10; $i++) {
@@ -111,6 +111,8 @@ $output .= '
 <!-- END OF NEW ENTRY FORM--> 
 ';
 }
+
+
 
 $output .= '
 <!-- DISPLAY FACULTY IN A TABLE -->
@@ -198,15 +200,27 @@ $output .= '
 									<!-- ADVISING SECTION FORM -->
 								<div class="input-group input-group-sm mb-3">
 									<span class="input-group-text">Adviser of </span>
-									<select name="advising">														
+									<select name="advising">
+																								
 ';
 							//retrieve current advising section and show it as option first
 							$advising = retrieveId($pdo, 'grade_level', 'adviser_id', $row['id']);
-$output .= '
+
+							if(isset($advising['adviser_id'])) {
+								$output .= '
 										<option value="'.$advising['id'].'">
 										'.$advising['grade']. ' - ' . $advising['section'] .'
 										</option>
-';
+								';
+							} else {
+								$output .= '
+									<option disable selected>
+										Select Grade & Section
+									</option>
+								';
+							}
+
+
 
 							//retrieve grade and section for the form
 							for($i = 7; $i <= 10; $i++) {

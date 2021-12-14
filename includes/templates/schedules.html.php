@@ -111,8 +111,14 @@ $output .= '
                 $output .= '  
                 <td>'.$row['section'].'</td>
                 <td>0/8</td>
-                <td>0/24</td>
-                <td>'.$adviser['firstName']. ' '.$adviser['lastName'].'</td>
+                <td>0/24</td> ';
+
+                if(isset($adviser['adviser_id'])) 
+                    $output .= '<td>'.$adviser['firstName']. ' '.$adviser['lastName'].'</td>';
+                else 
+                    $output .= '<td>TBD</td>';
+                
+                $output .= '
                 <td>
                     <link><a href="scheduler.php" target="_blank"><button type="button" class="btn btn-primary">Edit Schedule</button></a></link>
                     <form action="schedules.php" method="post" style="display: inline;margin:0; padding:0">
