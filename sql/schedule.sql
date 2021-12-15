@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 15, 2021 at 05:42 AM
+-- Generation Time: Dec 15, 2021 at 10:38 AM
 -- Server version: 8.0.27
 -- PHP Version: 7.4.26
 
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `class_schedule` (
   `id` int NOT NULL AUTO_INCREMENT,
   UNIQUE KEY `id` (`id`),
   KEY `teacher` (`teacher_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `class_schedule`
@@ -70,11 +70,11 @@ INSERT INTO `class_schedule` (`grade_section`, `teacher_id`, `subject`, `day`, `
 ('7A', 98, 'MAPEH', 'fri', 950, 1150, 200, 68),
 ('7A', 99, 'AP', 'mon', 1300, 1500, 200, 69),
 ('7A', 99, 'AP', 'wed', 1300, 1400, 100, 72),
-('7A', 99, 'AP', 'fri', 1300, 1400, 100, 73),
-('7A', 102, 'ESP', 'tue', 1300, 1500, 200, 74),
 ('7A', 102, 'ESP', 'thu', 1300, 1500, 200, 75),
-('7A', 105, 'TLE', 'wed', 1400, 1600, 200, 76),
-('7A', 105, 'TLE', 'fri', 1400, 1600, 200, 77);
+('7A', 105, 'TLE', 'tue', 1300, 1500, 200, 78),
+('7A', 105, 'TLE', 'fri', 1300, 1500, 200, 79),
+('7B', 110, 'Mathematics', 'wed', 775, 875, 100, 80),
+('7B', 110, 'Mathematics', 'thu', 775, 875, 100, 81);
 
 -- --------------------------------------------------------
 
@@ -91,19 +91,34 @@ CREATE TABLE IF NOT EXISTS `grade_level` (
   PRIMARY KEY (`grade`,`section`),
   UNIQUE KEY `id` (`id`),
   KEY `adviser` (`adviser_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `grade_level`
 --
 
 INSERT INTO `grade_level` (`id`, `adviser_id`, `grade`, `section`) VALUES
-(69, NULL, '-', '-'),
 (73, 93, '10', 'A'),
+(81, NULL, '10', 'B'),
+(82, NULL, '10', 'C'),
+(83, NULL, '10', 'D'),
+(95, NULL, '10', 'E'),
 (70, NULL, '7', 'A'),
-(74, 69, '8', 'B'),
-(72, 69, '9', 'A'),
-(76, NULL, '9', 'C');
+(84, NULL, '7', 'B'),
+(85, NULL, '7', 'C'),
+(86, NULL, '7', 'D'),
+(96, 93, '7', 'E'),
+(97, 105, '7', 'F'),
+(87, NULL, '8', 'A'),
+(74, NULL, '8', 'B'),
+(88, NULL, '8', 'C'),
+(89, NULL, '8', 'D'),
+(90, NULL, '8', 'E'),
+(72, NULL, '9', 'A'),
+(92, NULL, '9', 'B'),
+(76, NULL, '9', 'C'),
+(93, NULL, '9', 'D'),
+(94, NULL, '9', 'E');
 
 -- --------------------------------------------------------
 
@@ -126,17 +141,17 @@ CREATE TABLE IF NOT EXISTS `teacher` (
 --
 
 INSERT INTO `teacher` (`id`, `firstName`, `lastName`, `dept`, `workload`) VALUES
-(69, 'TBD', '-', '-', 0),
+(69, 'TBD', '', '', 0),
 (93, 'English', 'Teacher1', 'English', 4),
 (94, 'Filipino', 'Teacher1', 'Filipino', 4),
 (95, 'Filipino', 'Teacher2', 'Filipino', 0),
 (96, 'MAPEH', 'Teacher1', 'MAPEH', 0),
 (97, 'MAPEH', 'Teacher2', 'MAPEH', 0),
 (98, 'MAPEH', 'Teacher3', 'MAPEH', 4),
-(99, 'AP', 'Teacher1', 'AP', 4),
+(99, 'AP', 'Teacher1', 'AP', 3),
 (100, 'AP', 'Teacher2', 'AP', 0),
 (101, 'AP', 'Teacher3', 'AP', 0),
-(102, 'ESP', 'Teacher1', 'ESP', 4),
+(102, 'ESP', 'Teacher1', 'ESP', 2),
 (103, 'ESP', 'Teacher2', 'ESP', 0),
 (104, 'ESP', 'Teacher3', 'ESP', 0),
 (105, 'TLE', 'Teacher1', 'TLE', 4),
@@ -144,7 +159,7 @@ INSERT INTO `teacher` (`id`, `firstName`, `lastName`, `dept`, `workload`) VALUES
 (107, 'Science', 'Teacher1', 'Science', 0),
 (108, 'Science', 'Teacher2', 'Science', 14),
 (109, 'English', 'Teacher2', 'English', 0),
-(110, 'Math', 'Teacher1', 'Mathematics', 9),
+(110, 'Math', 'Teacher1', 'Mathematics', 11),
 (111, 'Math', 'Teacher2', 'Mathematics', 0);
 
 --
