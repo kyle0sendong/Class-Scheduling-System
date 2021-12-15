@@ -67,7 +67,7 @@ $output = '
 
         $output .= '
 
-        <div class="session Mathematics" style="grid-column: '.$schedDay.'; grid-row: time-'.$schedStart.' / time-'.$schedEnd.';"> 
+        <div class="session English" style="grid-column: '.$schedDay.'; grid-row: time-'.$schedStart.' / time-'.$schedEnd.';"> 
         ';
             //check again if sched start/end is a 45 minute then add 25 
         if($isStart45)  
@@ -76,12 +76,12 @@ $output = '
           $schedEnd += 25;
 
         $output .= '
-            <div class="session-time">
+            <div class="session-time Filipino">
                 <div>'.convertTime($schedStart).' - '.convertTime($schedEnd) . ' <u>' .$schedSection.'</u></div>
             </div>
 
             <div>
-              <a href="scheduler.php?grade_section='.$schedSection.'&subject='.$_GET['dept'].'#main" class ="btn btn-primary" target="_blank" style="font-size:11; margin: 1% 0 0 10%;">Edit</a>
+              <a href="scheduler.php?grade_section='.$schedSection.'&subject='.$_GET['dept'].'#main" class ="btn btn-primary" target="_blank" style="font-size:11; margin: 1%;">Edit Schedule</a>
             </div> 
         </div>
         ';

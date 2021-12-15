@@ -112,7 +112,7 @@ if($isSetDept) {	//if department is clicked, show add new entry
 
 $output .= '
 
-	<div class="table">
+	<div class="table1">
 	<table class="table table-hover">
 
 		<thead>

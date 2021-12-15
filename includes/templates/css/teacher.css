@@ -12,17 +12,25 @@
     font-weight: bold;
 }
 
-.table {
+.table1 {
     margin-top: 4%;
     overflow: auto;
     height: 60%;
 }
 
-.table a {
+.table1 tr {
+    height: 40px;
+}
+
+.table1 td {
+    height: 40px;
+}
+
+.table1 a {
     font-size: 11px;
 }
 
-.table button{
+.table1 button{
     font-size: 12px;
 }
 
