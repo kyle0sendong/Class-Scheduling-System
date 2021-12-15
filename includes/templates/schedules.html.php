@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="./includes/templates/css/schedules.css">
     
 <?php 
-
+$title = 'Schedules';
 /*Display form for a new Grade and Section */
 $output = '
 <div class="wrapper-schedules">

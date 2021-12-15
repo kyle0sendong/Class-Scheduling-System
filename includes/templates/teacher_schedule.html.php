@@ -1,9 +1,12 @@
 <link rel="stylesheet" type="text/css" href="./includes/templates/css/scheduler.css">
 
 <?php 
-    $teacher_id = $_GET['id'];
-    $teacher = retrieveId($pdo, 'teacher', 'id', $teacher_id);
-    $teacherName = $teacher['firstName'] . ' ' . $teacher['lastName'];
+
+$title = 'Teacher Schedule';
+
+$teacher_id = $_GET['id'];
+$teacher = retrieveId($pdo, 'teacher', 'id', $teacher_id);
+$teacherName = $teacher['firstName'] . ' ' . $teacher['lastName'];
 /*     DISPLAY TIME TABLE     */ 
 $output = '
 <div class="text" style="height: 400px; width: 800px; margin-left: 5%;">

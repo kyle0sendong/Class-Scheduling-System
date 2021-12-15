@@ -1,6 +1,7 @@
 <link rel="stylesheet" type="text/css" href="./includes/templates/css/teacher.css">
 
 <?php 
+$title = 'Faculties';
 
 $isSetDept = isset($_GET['dept']);
 

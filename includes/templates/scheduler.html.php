@@ -2,7 +2,7 @@
 
 <?php 
 
-
+$title = 'Scheduler';
 /*          ADD MODULE          */
   $output = '
 <div style="display:flex;">

@@ -1,7 +1,9 @@
 <link rel="stylesheet" type="text/css" href="./includes/templates/css/department.css">
 
 <?php 
+$title = 'Department';
 
+//total number of faculty per department
 $mathCount = totalId($pdo, 'teacher', 'dept', 'Mathematics');
 $sciCount = totalId($pdo, 'teacher', 'dept', 'Science');
 $engCount = totalId($pdo, 'teacher', 'dept', 'English');
