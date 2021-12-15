@@ -126,9 +126,9 @@ for ($i = 7; $i <= 10; $i++) {
         $output .= '
                 <td>
                     <a href="scheduler.php?grade_section='.$row['grade'].$row['section'].'#main" class="btn btn-primary target="_blank">Edit Schedule</a>
-                    <form action="schedules.php" method="post" style="display: inline;margin:0; padding:0">
+                    <form action="schedules.php" method="post" onsubmit="return submitForm(this);" style="display: inline;margin:0; padding:0">
                         <input type="hidden" name="id" value="'.$row['id'].'">
-                        <button type="submit" class="btn btn-danger" name="deleteEntry" value="deleteEntry">X</button>
+                        <button type="submit" class="btn btn-danger" name="deleteEntry" value="deleteEntry" >X</button>
                     </form>
                 </td>
             </tr>
@@ -149,3 +149,6 @@ $output.= '
 ';
 
 ?>
+
+<script src="./includes/templates/script/sweetalert.min.js"></script>
+<script src="./includes/templates/script/deleteAlert.js"></script>

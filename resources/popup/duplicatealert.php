@@ -1,4 +1,5 @@
 <script src="sweetalert.min.js"></script>
+
 <form method="POST" action="do-something.php" onsubmit="return submitForm(this);">
     <input type="submit" />
 </form>
