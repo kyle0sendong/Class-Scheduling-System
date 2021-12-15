@@ -5,20 +5,21 @@
 }
 
 body {
-    width: 100vw;
-    height: 100vh;
+    width: auto;
+    height: 130%;
     padding: 0;
     margin: 0;
-
+    
 }
 
 main {
-    width: 100%;
+    width: auto;
     height: 100%;
+    background: linear-gradient(-225deg, #B7F8DB 0%, #50A7C2 100%);
 }
 
 .nav{
-    background: #101820FF;
+    background: #1f6f78;
     height: auto;
     padding: 10px;
     width: 100%;

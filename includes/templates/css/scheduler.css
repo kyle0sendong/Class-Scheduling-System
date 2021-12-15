@@ -1,20 +1,10 @@
-.blue   { background: #0000FF }
-.purple { background: #800080 }
-.navy   { background: #000080 }
-.green  { background: #008000 }
-.red    { background: #FF0000 }
-.orange { background: #FF8C00 }
-.yellow { background: #FFFF00 }
-.gray   { background: #808080 }
-
-
 .add-module{
   display:inline-block;
   border-bottom: 2px solid silver;
   height: auto;
   padding-bottom: 100px;
   color: white;
-  background: #101820FF;
+  background: #3baea0;
   width: 23%;
   font-size: 15px;
 }
@@ -87,7 +77,6 @@ input {
     margin: 0 auto;
     border: 1px solid rgb(192, 188, 188);
     width: 90%;
-    background: rgb(192, 188, 188);
   }
 
   .day-picker div {
@@ -136,26 +125,26 @@ input {
       margin-left: 6%;
       grid-template-rows:       /*30 minutes is represented as 0050 instead of 0030 because of decimal*/
         [tracks] 10%
-        [time-700] 5%
-        [time-750] 2%
-        [time-800] 5%
-        [time-850] 2%
-        [time-900] 5%
-        [time-950] 2%
-        [time-1000] 5%
-        [time-1050] 2%
-        [time-1100] 5%
-        [time-1150] 2%
-        [time-1200] 5%
-        [time-1250] 2%
-        [time-1300] 5%
-        [time-1350] 2%
-        [time-1400] 5%
-        [time-1450] 2%
-        [time-1500] 5%
-        [time-1550] 2%
-        [time-1600] 5%
-        [time-1650] 2%;
+        [time-700] 7%
+        [time-750] 3%
+        [time-800] 7%
+        [time-850] 3%
+        [time-900] 7%
+        [time-950] 3%
+        [time-1000] 7%
+        [time-1050] 3%
+        [time-1100] 7%
+        [time-1150] 3%
+        [time-1200] 7%
+        [time-1250] 3%
+        [time-1300] 7%
+        [time-1350] 3%
+        [time-1400] 7%
+        [time-1450] 3%
+        [time-1500] 7%
+        [time-1550] 3%
+        [time-1600] 7%
+        [time-1650] 3%;
       
       grid-template-columns:
         [times] 4em
@@ -172,8 +161,7 @@ input {
   .text {
     display:inline-block;
     width:70%;
-    height: 110vh;
-    padding-bottom: 100px;
+    height: 100%;
   }
   .text-wrapper {
     display: flex;
@@ -219,7 +207,6 @@ input {
         position: sticky;
         top: 0;
         z-index: 1000;
-        background-color: rgba(255,255,255,.9);
       }
     }
   }
@@ -276,40 +263,40 @@ input {
   }
   
   .Mathematics {
-    background-color: #7675AA;
+    background-color: #5585b5;
     color: white;
   }
   
   .Science {
-    background-color: #34EBFF;
-    color: black;
+    background-color: #40a798;
+    color: rgba(255, 255, 255, 0.952);
   }
   
   .English {
-    background-color: #00D51B;
+    background-color: #79c2d0;
     color: black;
   }
   
   .Filipino {
-    background-color: #FFED00;
+    background-color: #bbe4e9;
     color: black;
   }
     
   .MAPEH {
-    background-color: #FB9C01;
-    color: black;
+    background-color: #3c4245;
+    color: rgb(229, 226, 226);
   }
 
   .AP {
-    background-color: #E05834;
+    background-color: #5f6769;
     color: white;
   }
   .ESP {
-    background-color: #9D91FB;
-    color: black;
+    background-color: #719192;
+    color: rgb(238, 234, 234);
   }
   .TLE {
-    background-color: #ED80AA;
+    background-color: #dfcdc3;
     color: black;
   }
   

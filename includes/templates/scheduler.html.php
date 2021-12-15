@@ -71,8 +71,7 @@
   /* If grade and section is selected, display the add schedule form */
   if($gradeSection != ' ') {
     $output .= '
-    <label for="subject">Subjects</label> 
-    <div class="dropdown" style="width: 50%;">
+    <div class="dropdown" style="width: 100%; display:flex; justify-content:center;">
       <button onclick="dropDown('.'\'subject\''.')" class="dropbtn">'.$subjectSelected.'</button>
       <div id="subject" class="dropdown-content">
         <a href="scheduler.php?grade_section='.$gradeSection.'&subject=Mathematics">Mathematics</a>
@@ -273,9 +272,9 @@
       <span class="English"> <u>Eng</u> <br> '.$subjectsCount[2].'/4 </span>
       <span class="Filipino"> <u>Fil</u> <br> '.$subjectsCount[3].'/4 </span>
       <span class="TLE"> <u>TLE <br></u> '.$subjectsCount[4].'/4 </span>
-      <span class="AP"> <u>AP</u> <br> '.$subjectsCount[5].'/4 </span>
+      <span class="AP"> <u>AP</u> <br> '.$subjectsCount[5].'/3 </span>
       <span class="MAPEH"> <u>MAPEH</u> <br> '.$subjectsCount[6].'/4 </span>
-      <span class="ESP"> <u>ESP</u> <br> '.$subjectsCount[7].'/4 </span>
+      <span class="ESP"> <u>ESP</u> <br> '.$subjectsCount[7].'/2 </span>
     </span>
     ';
   }
@@ -357,7 +356,7 @@
                   <input type="hidden" name="teacher_id" value="'.$teacher['id'].'">
                   <input type="hidden" name="grade_section" value="'.$gradeSection.'">
                   <input type="hidden" name="duration" value="'.$sched['duration'].'">
-                  <button type="submit" name="deleteSchedule" value="'.$sched['id'].'">X</button> 
+                  <button type="submit" name="deleteSchedule" value="'.$sched['id'].'" style="background:#fb7777;">X</button> 
                 </form>
               </div>
             </div>

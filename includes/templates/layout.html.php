@@ -19,8 +19,8 @@
     <div class="nav">
 
         <div class="nav_logo">
-            <img src="./includes/templates/css/logosched.png" width="29px" height="24px" style="margin-left:7%">
-            <h3 >Class Scheduler</h3>
+            <img src="./includes/templates/css/logo.png" width="40px" height="40px" style="margin-left:7%">
+            <h3 >BNHS</h3>
         </div>
 
         <ul>   

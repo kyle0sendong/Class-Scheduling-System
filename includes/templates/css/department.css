@@ -2,8 +2,6 @@
 
 .dept_title {
     color: black;
-    background: white;
-    outline-color: black;
     border-radius: 4px;
     display: flex;
     align-items: center;
@@ -19,7 +17,6 @@
 
 .table {
     width: 80%;
-    height: 100%;
 }
 
 table {
