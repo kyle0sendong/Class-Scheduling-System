@@ -37,7 +37,7 @@ session_start();
 					{
 
 						$_SESSION['user_id'] = $user_data['user_id'];
-						header("Location: teacher.php");
+						header("Location: schedules.php");
 						die;
 					}
 				}
