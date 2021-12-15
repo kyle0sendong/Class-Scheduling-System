@@ -105,10 +105,12 @@ for ($i = 7; $i <= 10; $i++) {
 
     foreach($currentGrade as $row) {
         $adviser = retrieveId($pdo, 'teacher', 'id', $row['adviser_id']);
+        $grade_section = $row['grade'].$row['section'];
+        
         $output .= '  
                 <tr>
                     <td>'.$row['section'].'</td>
-                    <td>0/24</td> 
+                    <td>'.$row['workload'].'</td> 
         ';
 
         if(isset($row['adviser_id'])) 
@@ -123,7 +125,7 @@ for ($i = 7; $i <= 10; $i++) {
         
         $output .= '
                 <td>
-                    <a href="scheduler.php?grade_section='.$row['grade'].$row['section'].'#main" class="btn btn-primary target="_blank">Edit Schedule</a>
+                    <a href="scheduler.php?grade_section='.$grade_section.'#main" class="btn btn-primary target="_blank">Edit Schedule</a>
                     <a href="#main" class="btn btn-primary"> Export</a>
                     <form action="schedules.php" method="post" onsubmit="return submitForm(this);" style="display: inline;margin:0; padding:0">
                         <input type="hidden" name="id" value="'.$row['id'].'">
