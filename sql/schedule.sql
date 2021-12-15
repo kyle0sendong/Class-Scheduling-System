@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 15, 2021 at 10:38 AM
+-- Generation Time: Dec 15, 2021 at 04:37 PM
 -- Server version: 8.0.27
 -- PHP Version: 7.4.26
 
@@ -39,23 +39,16 @@ CREATE TABLE IF NOT EXISTS `class_schedule` (
   `id` int NOT NULL AUTO_INCREMENT,
   UNIQUE KEY `id` (`id`),
   KEY `teacher` (`teacher_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `class_schedule`
 --
 
 INSERT INTO `class_schedule` (`grade_section`, `teacher_id`, `subject`, `day`, `start_time`, `end_time`, `duration`, `id`) VALUES
-('8A', 110, 'Mathematics', 'mon', 1600, 1700, 100, 33),
-('8A', 110, 'Mathematics', 'tue', 1600, 1700, 100, 34),
 ('8A', 110, 'Mathematics', 'wed', 1600, 1700, 100, 35),
 ('8A', 110, 'Mathematics', 'thu', 1600, 1700, 100, 36),
 ('8A', 110, 'Mathematics', 'fri', 1600, 1700, 100, 37),
-('8A', 108, 'Science', 'mon', 775, 975, 200, 45),
-('8A', 108, 'Science', 'tue', 775, 975, 200, 46),
-('8A', 108, 'Science', 'wed', 775, 975, 200, 47),
-('8A', 108, 'Science', 'thu', 775, 975, 200, 48),
-('8A', 108, 'Science', 'fri', 775, 975, 200, 49),
 ('7A', 110, 'Mathematics', 'wed', 750, 850, 100, 52),
 ('7A', 110, 'Mathematics', 'fri', 750, 850, 100, 53),
 ('7A', 108, 'Science', 'tue', 750, 950, 200, 54),
@@ -74,7 +67,11 @@ INSERT INTO `class_schedule` (`grade_section`, `teacher_id`, `subject`, `day`, `
 ('7A', 105, 'TLE', 'tue', 1300, 1500, 200, 78),
 ('7A', 105, 'TLE', 'fri', 1300, 1500, 200, 79),
 ('7B', 110, 'Mathematics', 'wed', 775, 875, 100, 80),
-('7B', 110, 'Mathematics', 'thu', 775, 875, 100, 81);
+('7B', 110, 'Mathematics', 'thu', 775, 875, 100, 81),
+('7B', 107, 'Science', 'mon', 750, 950, 200, 83),
+('7E', 110, 'Mathematics', 'wed', 1500, 1600, 100, 87),
+('7E', 110, 'Mathematics', 'thu', 1500, 1600, 100, 88),
+('7E', 110, 'Mathematics', 'fri', 1500, 1600, 100, 89);
 
 -- --------------------------------------------------------
 
@@ -88,37 +85,36 @@ CREATE TABLE IF NOT EXISTS `grade_level` (
   `adviser_id` int DEFAULT NULL,
   `grade` varchar(32) NOT NULL,
   `section` varchar(32) NOT NULL,
+  `workload` double NOT NULL,
   PRIMARY KEY (`grade`,`section`),
   UNIQUE KEY `id` (`id`),
   KEY `adviser` (`adviser_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `grade_level`
 --
 
-INSERT INTO `grade_level` (`id`, `adviser_id`, `grade`, `section`) VALUES
-(73, 93, '10', 'A'),
-(81, NULL, '10', 'B'),
-(82, NULL, '10', 'C'),
-(83, NULL, '10', 'D'),
-(95, NULL, '10', 'E'),
-(70, NULL, '7', 'A'),
-(84, NULL, '7', 'B'),
-(85, NULL, '7', 'C'),
-(86, NULL, '7', 'D'),
-(96, 93, '7', 'E'),
-(97, 105, '7', 'F'),
-(87, NULL, '8', 'A'),
-(74, NULL, '8', 'B'),
-(88, NULL, '8', 'C'),
-(89, NULL, '8', 'D'),
-(90, NULL, '8', 'E'),
-(72, NULL, '9', 'A'),
-(92, NULL, '9', 'B'),
-(76, NULL, '9', 'C'),
-(93, NULL, '9', 'D'),
-(94, NULL, '9', 'E');
+INSERT INTO `grade_level` (`id`, `adviser_id`, `grade`, `section`, `workload`) VALUES
+(73, 93, '10', 'A', 0),
+(81, NULL, '10', 'B', 0),
+(82, NULL, '10', 'C', 0),
+(83, NULL, '10', 'D', 0),
+(95, NULL, '10', 'E', 0),
+(70, NULL, '7', 'A', 29),
+(84, NULL, '7', 'B', 4),
+(101, 69, '7', 'C', 0),
+(96, 93, '7', 'E', 3),
+(87, NULL, '8', 'A', 3),
+(74, NULL, '8', 'B', 0),
+(88, NULL, '8', 'C', 0),
+(89, NULL, '8', 'D', 0),
+(90, NULL, '8', 'E', 0),
+(72, NULL, '9', 'A', 0),
+(92, NULL, '9', 'B', 0),
+(76, NULL, '9', 'C', 0),
+(93, NULL, '9', 'D', 0),
+(94, NULL, '9', 'E', 0);
 
 -- --------------------------------------------------------
 
@@ -156,11 +152,30 @@ INSERT INTO `teacher` (`id`, `firstName`, `lastName`, `dept`, `workload`) VALUES
 (104, 'ESP', 'Teacher3', 'ESP', 0),
 (105, 'TLE', 'Teacher1', 'TLE', 4),
 (106, 'TLE', 'Teacher2', 'TLE', 0),
-(107, 'Science', 'Teacher1', 'Science', 0),
-(108, 'Science', 'Teacher2', 'Science', 14),
+(107, 'Science', 'Teacher1', 'Science', 2),
+(108, 'Science', 'Teacher2', 'Science', 4),
 (109, 'English', 'Teacher2', 'English', 0),
-(110, 'Math', 'Teacher1', 'Mathematics', 11),
+(110, 'Math', 'Teacher1', 'Mathematics', 12),
 (111, 'Math', 'Teacher2', 'Mathematics', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `user_name` text NOT NULL,
+  `password` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_name`, `password`) VALUES
+('admin', 'engineering');
 
 --
 -- Constraints for dumped tables
