@@ -27,10 +27,13 @@
             <li><a href="scheduler.php#main"><b>SCHEDULER</b></a></li>
             <li><a href="department.php#main"><b>DEPARTMENTS</b></a></li>
             <li><a href="schedules.php#main"><b>SCHEDULES</b></a></li>
-            <li><a href="login.php" style="color:#e3242e;"><b>LOGOUT</b></a></li>
-            
         </ul>
         
+        <li class="nav_btn">
+            <div style="font-size: 15px; color: white;">
+                <a href="index.php" class="fas fa-sign-out-alt">Logout</a>
+            </div>
+        </li>
     </div>
 <!-- -->
     

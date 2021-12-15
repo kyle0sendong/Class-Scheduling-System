@@ -47,8 +47,9 @@ main {
 .nav ul{
     display: flex;
     list-style: none;
-    margin:0 100px;
+    margin:0 70px;
     cursor: pointer;
+    width: 40%;
 }
 
 .nav li a{
@@ -59,7 +60,7 @@ main {
     font-size: 12px;
     font-family: Arial, sans-serif;
     letter-spacing: 2px;
-    padding: 0 35px;
+    padding: 0 30px;
     cursor: pointer;
     transition: all 200ms;
 }
@@ -83,7 +84,6 @@ ul li a:hover{
 .buttons{
     border: none;
     color: white;
- 
     top: 20%;
     left: 16%;
     text-decoration: none;
