@@ -48,18 +48,41 @@ $output = '
         $teacher_sched_exist = false;
     
     foreach($teacher_sched as $sched) {
-        
+
         $schedDay = $sched['day'];
         $schedStart = $sched['start_time'];
         $schedEnd = $sched['end_time'];
         $schedSection = $sched['grade_section'];
 
+        $isStart45 = false;
+        $isEnd45 = false;
+        if(($schedStart-25) % 50 == 0) {  //if it is a 45 minute
+          $schedStart -= 25;
+          $isStart45 = true;
+        }
+        if(($schedEnd-25) % 50 == 0) { // if it is a 45 minute
+          $schedEnd -= 25;
+          $isEnd45 = true;
+        }
+
         $output .= '
 
-        <div class="session Mathematics" style="grid-column: '.$schedDay.'; grid-row: time-'.$schedStart.' / time-'.$schedEnd.';">
+        <div class="session Mathematics" style="grid-column: '.$schedDay.'; grid-row: time-'.$schedStart.' / time-'.$schedEnd.';"> 
+        ';
+            //check again if sched start/end is a 45 minute then add 25 
+        if($isStart45)  
+          $schedStart += 25;
+        if($isEnd45)
+          $schedEnd += 25;
+
+        $output .= '
             <div class="session-time">
-                <div>'.convertTime($schedStart).' - '.convertTime($schedEnd) . ' ' . $schedSection.'</div>
+                <div>'.convertTime($schedStart).' - '.convertTime($schedEnd) . ' <u>' .$schedSection.'</u></div>
             </div>
+
+            <div>
+              <a href="scheduler.php?grade_section='.$schedSection.'&subject='.$_GET['dept'].'#main" class ="btn btn-primary" target="_blank" style="font-size:11; margin: 1% 0 0 10%;">Edit</a>
+            </div> 
         </div>
         ';
     }

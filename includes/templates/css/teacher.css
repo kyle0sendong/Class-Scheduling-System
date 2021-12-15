@@ -3,9 +3,8 @@
     top: 20%;
     left: 5%;
     font-size: 15px;
-    background: white;
     outline: gray ;
-    height: 80%;
+    height: 100%;
     width: 80%;
 }
 .container p{
@@ -15,6 +14,8 @@
 
 .table {
     margin-top: 4%;
+    overflow: auto;
+    height: 60%;
 }
 
 .table a {

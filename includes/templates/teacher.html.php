@@ -14,7 +14,7 @@ $output = ' <div class="container"> ';
 $output .= '
 	<form action="teacher.php" method="get" class="d-flex" style="margin-left:70%;">
 		<input class="form-control me-2" type="text" name="search" placeholder="Faculty Name" aria-label="Search"> 
-		<button class="btn btn-outline-success" type="submit">Search</button>
+		<button class="btn btn-outline-success" type="submit" style="color:white; background:#7ECBCD;"type="submit">Search</button>
 	</form>
 ';
 
@@ -117,8 +117,8 @@ $output .= '
 
 		<thead>
 			<tr>
-				<th scope="col">First </th>
-				<th scope="col">Last</th>
+				<th scope="col">First Name</th>
+				<th scope="col">Last Name</th>
 				<th scope="col">Department</th>
 				<th scope="col">Workload</th>
 			</tr>
@@ -149,7 +149,7 @@ foreach($result as $row) {	//run through all records taken
 				<td> '.$row['workload'].' Hour/s </td>
 
 				<td>
-					<a href="teacher_schedule.php?id='.$row['id'].'" class ="btn btn-primary" target="_blank">View Schedule</a>
+					<a href="teacher_schedule.php?id='.$row['id'].'&dept='.$row['dept'].'#main" class ="btn btn-primary" target="_blank">View Schedule</a>
 					
 					<button type="submit" class="btn btn-warning" name="updateEntry" value="updateEntry" data-bs-toggle="modal" data-bs-target="#a'.$row['id'].'">Edit</button>
 					

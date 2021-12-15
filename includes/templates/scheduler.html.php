@@ -10,7 +10,7 @@
 
 
 <!-- Retrieving grade and section -->
-  <div style="margin:5%">
+  <div style="margin:20% 0 5% 0">
   <div class="dropdown">
   ';
 
@@ -37,7 +37,7 @@
     $gradeLevel = retrieveAllId($pdo, 'grade_level', 'grade', $i);
     foreach($gradeLevel as $row) {
       $output .= '
-        <a href="scheduler.php?grade_section='.$row['grade'].$row['section'].'">
+        <a href="scheduler.php?grade_section='.$row['grade'].$row['section'].'#main">
         Grade '.$row['grade'].' - ' .$row['section'].' </a>
       ';
     }
@@ -74,14 +74,14 @@
     <div class="dropdown" style="width: 100%; display:flex; justify-content:center;">
       <button onclick="dropDown('.'\'subject\''.')" class="dropbtn">'.$subjectSelected.'</button>
       <div id="subject" class="dropdown-content">
-        <a href="scheduler.php?grade_section='.$gradeSection.'&subject=Mathematics">Mathematics</a>
-        <a href="scheduler.php?grade_section='.$gradeSection.'&subject=Science">Science</a>
-        <a href="scheduler.php?grade_section='.$gradeSection.'&subject=English">English</a>
-        <a href="scheduler.php?grade_section='.$gradeSection.'&subject=Filipino">Filipino</a>
-        <a href="scheduler.php?grade_section='.$gradeSection.'&subject=MAPEH">MAPEH</a>
-        <a href="scheduler.php?grade_section='.$gradeSection.'&subject=AP">AP</a>
-        <a href="scheduler.php?grade_section='.$gradeSection.'&subject=ESP">ESP</a>
-        <a href="scheduler.php?grade_section='.$gradeSection.'&subject=TLE">TLE</a>
+        <a href="scheduler.php?grade_section='.$gradeSection.'&subject=Mathematics#main">Mathematics</a>
+        <a href="scheduler.php?grade_section='.$gradeSection.'&subject=Science#main">Science</a>
+        <a href="scheduler.php?grade_section='.$gradeSection.'&subject=English#main">English</a>
+        <a href="scheduler.php?grade_section='.$gradeSection.'&subject=Filipino#main">Filipino</a>
+        <a href="scheduler.php?grade_section='.$gradeSection.'&subject=MAPEH#main">MAPEH</a>
+        <a href="scheduler.php?grade_section='.$gradeSection.'&subject=AP#main">AP</a>
+        <a href="scheduler.php?grade_section='.$gradeSection.'&subject=ESP#main">ESP</a>
+        <a href="scheduler.php?grade_section='.$gradeSection.'&subject=TLE#main">TLE</a>
       </div>
     </div>
     <hr>

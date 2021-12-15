@@ -36,12 +36,14 @@
 
 .table-wrapper {
     width: 70%;
-    height: 50%;
+    height: 65%;
     overflow: auto;
+    margin-left: 5%;
+    border: 1px solid black;
 }
 
 .table1 {
-    width: 70%; 
+    width: 90%; 
     height: auto;
     margin: 4% auto;
     padding: 20px;
@@ -55,6 +57,7 @@
     font-size: 12px;
     border: 1px solid;
     margin: auto;
+    width: 90%;
 }
 
 .table1 thead {
@@ -64,6 +67,10 @@
 .table1 th {
     border-right: 0.1px solid;
     padding-right: 5px;
+}
+
+.table1 tr {
+    border-bottom: 1px solid black;
 }
 
 .table1 thead, tr, th {
