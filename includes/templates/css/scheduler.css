@@ -81,8 +81,13 @@ input {
 
   .day-picker {
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
-    margin: 0 5%;;
+    margin: 0 auto;
+    border: 1px solid rgb(192, 188, 188);
+    width: 90%;
+    background: rgb(192, 188, 188);
   }
 
   .day-picker div {
@@ -105,12 +110,12 @@ input {
     font-size: 11px;
     user-select: none;
     overflow: hidden;
-    opacity: 0.9;
+
   }
 
   .day-picker div label input[type="checkbox"]:checked ~ span {
-    opacity: 1;
-    border: 1px solid;
+    opacity: 0.8;
+    border: 3px solid black;
   }
 
   .add-module hr {
@@ -124,34 +129,33 @@ input {
  *************************/
 @media screen and (min-width:700px) {
     .schedule {
-      height: 85%;
+      height: 100%;
       display: grid;
       grid-gap: 5px;
       margin-top: 2%;
       margin-left: 6%;
       grid-template-rows:       /*30 minutes is represented as 0050 instead of 0030 because of decimal*/
-        [tracks] auto
-        [time-700] 8%
-        [time-750] 4%
-        [time-800] 8%
-        [time-850] 4%
-        [time-900] 8%
-        [time-950] 4%
-        [time-1000] 8%
-        [time-1050] 4%
-        [time-1100] 8%
-        [time-1150] 4%
-        [time-1200] 8%
-        [time-1250] 4%
-        [time-1300] 8%
-        [time-1350] 4%
-        [time-1400] 8%
-        [time-1450] 4%
-        [time-1500] 8%
-        [time-1550] 4%
-        [time-1600] 8%
-        [time-1650] 4%
-        [time-1700] 8%;
+        [tracks] 10%
+        [time-700] 5%
+        [time-750] 2%
+        [time-800] 5%
+        [time-850] 2%
+        [time-900] 5%
+        [time-950] 2%
+        [time-1000] 5%
+        [time-1050] 2%
+        [time-1100] 5%
+        [time-1150] 2%
+        [time-1200] 5%
+        [time-1250] 2%
+        [time-1300] 5%
+        [time-1350] 2%
+        [time-1400] 5%
+        [time-1450] 2%
+        [time-1500] 5%
+        [time-1550] 2%
+        [time-1600] 5%
+        [time-1650] 2%;
       
       grid-template-columns:
         [times] 4em
@@ -168,24 +172,43 @@ input {
   .text {
     display:inline-block;
     width:70%;
-    height: auto;
+    height: 110vh;
     padding-bottom: 100px;
   }
   .text-wrapper {
     display: flex;
-    width: 80%;
+    align-items: center;
+    justify-content: space-around;
+    height: auto;
+    margin: 5% 0 0 5%;
   }
+
   .text-header {
     font-size: 32px;
-    margin-left: 5%;
   }
   
+  .total-hours {
+    display: flex;
+    width: auto;
+    height: 100%;
+  }
+
+  .total-hours span {
+    border: 1px solid black;
+    text-align: center;
+    padding: 5px;
+    font-size: 13px;
+    font-weight: 700;
+    width: 60px;
+    height: 60px;
+  }
   .time-slot {
     grid-column: times;
   }
   
   .track-slot {
     display: none; /* hidden on small screens and browsers without grid support */
+    height: 50px;
   }
   
   @supports( display:grid ) {
@@ -253,40 +276,40 @@ input {
   }
   
   .Mathematics {
-    background-color: #e4d1d1;
-    color: black;
+    background-color: #7675AA;
+    color: white;
   }
   
   .Science {
-    background-color: #b9b0b0;
+    background-color: #34EBFF;
     color: black;
   }
   
   .English {
-    background-color: #d9ecd0;
+    background-color: #00D51B;
     color: black;
   }
   
   .Filipino {
-    background-color: #77a8a8;
+    background-color: #FFED00;
     color: black;
   }
     
   .MAPEH {
-    background-color: #f0efef;
+    background-color: #FB9C01;
     color: black;
   }
 
   .AP {
-    background-color: #ddeedd;
-    color: black;
+    background-color: #E05834;
+    color: white;
   }
   .ESP {
-    background-color: #c2d4dd;
+    background-color: #9D91FB;
     color: black;
   }
   .TLE {
-    background-color: #b0aac0;
+    background-color: #ED80AA;
     color: black;
   }
   

@@ -64,8 +64,13 @@
   
       </div> <!-- Grade section -->
     </div>
+    <hr>
+    
+  ';
 
-    <hr> 
+  /* If grade and section is selected, display the add schedule form */
+  if($gradeSection != ' ') {
+    $output .= '
     <label for="subject">Subjects</label> 
     <div class="dropdown" style="width: 50%;">
       <button onclick="dropDown('.'\'subject\''.')" class="dropbtn">'.$subjectSelected.'</button>
@@ -111,7 +116,7 @@
 
   $output .= '
     <form action="scheduler.php" method="post">
-    <label for="teacher">Available Teachers</label> <br>
+    <label for="teacher" style="display:inline-block; margin-left: 25%;">Available Teachers</label> <br>
       <select name="teacher" style="width:80%; margin: 2% 0 0 10%;" required>
         <option value="'.$teacherId.'" selected>'.$teacherName.'</option>
   ';
@@ -143,8 +148,8 @@
     <hr>
   </div>
 
-  <div style="margin:5%; width:100%;">
-  <h1>Day</h1>
+  <div style="width:100%; text-align: center;">
+  <h1>Day Picker</h1>
     <div class="day-picker"> 
       <div>
         <label>
@@ -184,7 +189,7 @@
     </div>
   </div>
 
-  <div style="margin:5%">
+  <div style="margin:5%; text-align: center;">
   <h1>Time and Duration</h1>
     <label for="start_time">Start Time</label>
 
@@ -202,18 +207,17 @@
       </select>
 
       <select name="start_time_add" style="width:22%; margin: 0 0 0 6%;">
-        <option value="0" selected>00</option>
-        <option value="50">30</option>
+        <option value="0">00</option>
+        <option value="50" selected>30</option>
+        <option value="75" >45</option>
       </select>
   </div>
 
-  <div style="margin:5%">
+  <div style="margin:5%; text-align: center;">
     <label for="duration">Duration</label>
       <select name="duration" style="width:50%; margin: 0 0 0 10%;">
         <option value="100" selected>1 Hr</option>
-        <option value="150">1 Hr 30 Min</option>
         <option value="200">2 Hr</option>
-        <option value="250">2 Hr 30 Min</option>
         <option value="300">3 Hr</option>
       </select>
     <hr>
@@ -227,16 +231,58 @@
 
 </div>
   ';
+} else {
+  $output .= '
+  </div>
+</div>
+  ';
+}
 /*                        END OF SCHEDULE MAKING                     */
 
 
 /*     DISPLAY TIME TABLE     */
   $output .= '
+
 <div class="text">
   <div class="text-wrapper">
+    
     <span class="text-header">'.$displayGradeSection.'</span> 
-    <span class="total-hours"> asdlkajskd</span>
+  ';
+
+  if(isset($_GET['grade_section'])) { //For showing how many hours has been alloted to a subject
+    $grade_section = $_GET['grade_section'];
+    $subjects = ['Mathematics', 'Science', 'English', 'Filipino', 'TLE', 'AP', 'MAPEH', 'ESP'];
+    $subjectsCount = [0, 0, 0, 0, 0, 0, 0, 0];
+
+    for($i = 0; $i < 8; $i++) { //all subjects = 8
+
+      $temp = retrieveAllTwoId($pdo, 'class_schedule', 'grade_section', $grade_section, 'subject', $subjects[$i]);
+
+      foreach($temp as $row) {
+          if(isset($row['duration']))
+            $subjectsCount[$i] += ($row['duration']/100);
+      }
+      
+
+    }
+
+    $output .= '
+    <span class="total-hours"> 
+      <span class="Mathematics"> <u>Math</u> <br> '.$subjectsCount[0].'/4  </span>
+      <span class="Science"> <u>Sci</u> <br> '.$subjectsCount[1].'/4 </span>
+      <span class="English"> <u>Eng</u> <br> '.$subjectsCount[2].'/4 </span>
+      <span class="Filipino"> <u>Fil</u> <br> '.$subjectsCount[3].'/4 </span>
+      <span class="TLE"> <u>TLE <br></u> '.$subjectsCount[4].'/4 </span>
+      <span class="AP"> <u>AP</u> <br> '.$subjectsCount[5].'/4 </span>
+      <span class="MAPEH"> <u>MAPEH</u> <br> '.$subjectsCount[6].'/4 </span>
+      <span class="ESP"> <u>ESP</u> <br> '.$subjectsCount[7].'/4 </span>
+    </span>
+    ';
+  }
+
+  $output .= '
   </div>
+  <hr>
   <div class="schedule" aria-labelledby="schedule-heading">
     
     <span class="track-slot" aria-hidden="true" style="grid-column: mon; grid-row: tracks;">Monday</span>
@@ -265,7 +311,6 @@
     <h2 class="time-slot" style="grid-row: time-1550;"></h2>
     <h2 class="time-slot" style="grid-row: time-1600;">4:00pm</h2>
     <h2 class="time-slot" style="grid-row: time-1650;"></h2>
-    <h2 class="time-slot" style="grid-row: time-1700;">5:00pm</h2> 
   ';
 
   //For retrieving all data from the grade and section selected (will be displayed later)
@@ -280,12 +325,31 @@
     $schedSubject = $sched['subject'];
     $schedTeacher = $teacher['firstName'] . ' ' . $teacher['lastName'];
 
-    //print 
+    $isStart45 = false;
+    $isEnd45 = false;
+    if(($schedStart-25) % 50 == 0) {  //if it is a 45 minute
+      $schedStart -= 25;
+      $isStart45 = true;
+    }
+    if(($schedEnd-25) % 50 == 0) { // if it is a 45 minute
+      $schedEnd -= 25;
+      $isEnd45 = true;
+    }
+    //display each on their own day and day in the grid
     $output .= '
 
           <div class="session '.$schedSubject.'" style="grid-column: '.$schedDay.'; grid-row: time-'.$schedStart.' / time-'.$schedEnd.';">
             <div class="session-time">
-              <div>'.convertTime($schedStart).' - '.convertTime($schedEnd) . ' ' . convertSubject($schedSubject).'</div>
+    ';
+    //check again if sched start/end is a 45 minute then add 25 
+    if($isStart45)  
+      $schedStart += 25;
+    if($isEnd45)
+      $schedEnd += 25;
+
+    $output .= '
+              <span>'.convertTime($schedStart).' - '.convertTime($schedEnd) . ' ' . '</span>
+              <span><u>'.convertSubject($schedSubject).'</u></span>
 
               <!-- FORM FOR THE DELETE BUTTON -->
               <div> 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 14, 2021 at 01:43 PM
+-- Generation Time: Dec 15, 2021 at 05:42 AM
 -- Server version: 8.0.27
 -- PHP Version: 7.4.26
 
@@ -33,35 +33,48 @@ CREATE TABLE IF NOT EXISTS `class_schedule` (
   `teacher_id` int DEFAULT NULL,
   `subject` varchar(32) NOT NULL,
   `day` varchar(32) NOT NULL,
-  `start_time` int NOT NULL,
-  `end_time` int NOT NULL,
+  `start_time` float NOT NULL,
+  `end_time` float NOT NULL,
   `duration` int NOT NULL,
   `id` int NOT NULL AUTO_INCREMENT,
   UNIQUE KEY `id` (`id`),
   KEY `teacher` (`teacher_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `class_schedule`
 --
 
 INSERT INTO `class_schedule` (`grade_section`, `teacher_id`, `subject`, `day`, `start_time`, `end_time`, `duration`, `id`) VALUES
-('7A', 108, 'Science', 'mon', 950, 1100, 150, 17),
-('7A', 108, 'Science', 'wed', 950, 1100, 150, 18),
-('7A', 108, 'Science', 'thu', 950, 1100, 150, 19),
-('7A', 93, 'English', 'tue', 1100, 1200, 100, 20),
-('7A', 93, 'English', 'wed', 1100, 1200, 100, 21),
-('7A', 93, 'English', 'fri', 1100, 1200, 100, 22),
-('7A', 94, 'Filipino', 'mon', 1350, 1500, 150, 23),
-('7A', 94, 'Filipino', 'tue', 1350, 1500, 150, 24),
-('7A', 94, 'Filipino', 'wed', 1350, 1500, 150, 25),
-('7A', 96, 'MAPEH', 'wed', 750, 900, 150, 26),
-('7A', 96, 'MAPEH', 'thu', 750, 900, 150, 27),
-('7A', 96, 'MAPEH', 'fri', 750, 900, 150, 28),
-('7A', 99, 'AP', 'thu', 1300, 1600, 300, 29),
-('7A', 99, 'AP', 'fri', 1300, 1600, 300, 30),
-('7A', 110, 'Mathematics', 'mon', 700, 900, 200, 31),
-('7A', 110, 'Mathematics', 'tue', 700, 900, 200, 32);
+('8A', 110, 'Mathematics', 'mon', 1600, 1700, 100, 33),
+('8A', 110, 'Mathematics', 'tue', 1600, 1700, 100, 34),
+('8A', 110, 'Mathematics', 'wed', 1600, 1700, 100, 35),
+('8A', 110, 'Mathematics', 'thu', 1600, 1700, 100, 36),
+('8A', 110, 'Mathematics', 'fri', 1600, 1700, 100, 37),
+('8A', 108, 'Science', 'mon', 775, 975, 200, 45),
+('8A', 108, 'Science', 'tue', 775, 975, 200, 46),
+('8A', 108, 'Science', 'wed', 775, 975, 200, 47),
+('8A', 108, 'Science', 'thu', 775, 975, 200, 48),
+('8A', 108, 'Science', 'fri', 775, 975, 200, 49),
+('7A', 110, 'Mathematics', 'wed', 750, 850, 100, 52),
+('7A', 110, 'Mathematics', 'fri', 750, 850, 100, 53),
+('7A', 108, 'Science', 'tue', 750, 950, 200, 54),
+('7A', 108, 'Science', 'thu', 750, 950, 200, 55),
+('7A', 110, 'Mathematics', 'mon', 750, 950, 200, 56),
+('7A', 93, 'English', 'wed', 850, 950, 100, 58),
+('7A', 93, 'English', 'fri', 850, 950, 100, 59),
+('7A', 93, 'English', 'mon', 950, 1150, 200, 60),
+('7A', 94, 'Filipino', 'tue', 950, 1150, 200, 61),
+('7A', 94, 'Filipino', 'thu', 950, 1150, 200, 62),
+('7A', 98, 'MAPEH', 'wed', 950, 1150, 200, 67),
+('7A', 98, 'MAPEH', 'fri', 950, 1150, 200, 68),
+('7A', 99, 'AP', 'mon', 1300, 1500, 200, 69),
+('7A', 99, 'AP', 'wed', 1300, 1400, 100, 72),
+('7A', 99, 'AP', 'fri', 1300, 1400, 100, 73),
+('7A', 102, 'ESP', 'tue', 1300, 1500, 200, 74),
+('7A', 102, 'ESP', 'thu', 1300, 1500, 200, 75),
+('7A', 105, 'TLE', 'wed', 1400, 1600, 200, 76),
+('7A', 105, 'TLE', 'fri', 1400, 1600, 200, 77);
 
 -- --------------------------------------------------------
 
@@ -78,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `grade_level` (
   PRIMARY KEY (`grade`,`section`),
   UNIQUE KEY `id` (`id`),
   KEY `adviser` (`adviser_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `grade_level`
@@ -88,7 +101,6 @@ INSERT INTO `grade_level` (`id`, `adviser_id`, `grade`, `section`) VALUES
 (69, NULL, '-', '-'),
 (73, 93, '10', 'A'),
 (70, NULL, '7', 'A'),
-(71, 94, '8', 'A'),
 (74, 69, '8', 'B'),
 (72, 69, '9', 'A'),
 (76, NULL, '9', 'C');
@@ -115,25 +127,25 @@ CREATE TABLE IF NOT EXISTS `teacher` (
 
 INSERT INTO `teacher` (`id`, `firstName`, `lastName`, `dept`, `workload`) VALUES
 (69, 'TBD', '-', '-', 0),
-(93, 'English', 'Teacher1', 'English', 3),
-(94, 'Filipino', 'Teacher1', 'Filipino', 4.5),
+(93, 'English', 'Teacher1', 'English', 4),
+(94, 'Filipino', 'Teacher1', 'Filipino', 4),
 (95, 'Filipino', 'Teacher2', 'Filipino', 0),
-(96, 'MAPEH', 'Teacher1', 'MAPEH', 4.5),
+(96, 'MAPEH', 'Teacher1', 'MAPEH', 0),
 (97, 'MAPEH', 'Teacher2', 'MAPEH', 0),
-(98, 'MAPEH', 'Teacher3', 'MAPEH', 0),
-(99, 'AP', 'Teacher1', 'AP', 6),
+(98, 'MAPEH', 'Teacher3', 'MAPEH', 4),
+(99, 'AP', 'Teacher1', 'AP', 4),
 (100, 'AP', 'Teacher2', 'AP', 0),
 (101, 'AP', 'Teacher3', 'AP', 0),
-(102, 'ESP', 'Teacher1', 'ESP', 0),
+(102, 'ESP', 'Teacher1', 'ESP', 4),
 (103, 'ESP', 'Teacher2', 'ESP', 0),
 (104, 'ESP', 'Teacher3', 'ESP', 0),
-(105, 'TLE', 'Teacher1', 'TLE', 0),
+(105, 'TLE', 'Teacher1', 'TLE', 4),
 (106, 'TLE', 'Teacher2', 'TLE', 0),
 (107, 'Science', 'Teacher1', 'Science', 0),
-(108, 'Science', 'Teacher2', 'Science', 4.5),
+(108, 'Science', 'Teacher2', 'Science', 14),
 (109, 'English', 'Teacher2', 'English', 0),
-(110, 'Mathematics', 'Teacher1', 'Mathematics', 4),
-(111, 'Mathematics', 'Teacher2', 'Mathematics', 0);
+(110, 'Math', 'Teacher1', 'Mathematics', 9),
+(111, 'Math', 'Teacher2', 'Mathematics', 0);
 
 --
 -- Constraints for dumped tables

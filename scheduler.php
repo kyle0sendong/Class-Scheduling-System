@@ -83,12 +83,26 @@ function retrieveTwoId($pdo, $table, $primaryKey1, $value1, $primaryKey2, $value
     return $query->fetch();
 }
 
+function retrieveAllTwoId($pdo, $table, $primaryKey1, $value1, $primaryKey2, $value2) {
+
+    $query = 'SELECT * FROM `' . $table . '`
+              WHERE `' . $primaryKey1 . '` = :value1
+              AND `' . $primaryKey2 . '` = :value2 ';
+
+    $parameters = [
+        'value1' => $value1,
+        'value2' => $value2
+    ];
+
+    $query = query($pdo, $query, $parameters);
+    return $query->fetchAll();
+}
+
 function convertSubject($subject) {
     if($subject == 'Mathematics')
       return 'Math';
-    if($subject == 'Filipino')
-      return 'Fil';
-      return $subject;
+
+    return $subject;
   
   }
   
@@ -98,32 +112,37 @@ function convertTime($time) {
         $time = $time/100;
         $stringTime;
 
-        if($time > 12) {  //if it is an afternoon class
+        if($time > 12)   //if it is an afternoon class
+            $stringTime = ($time - 12) . ':00';
+        else
+            $stringTime = $time . ':00';
+
+        return $stringTime;
         
-        $stringTime = ($time - 12) . ':00';
-        return $stringTime;
-        } else {
-
-        $stringTime = $time . ':00';
-        return $stringTime;
-        }
-
-    } else { //if it has a 30 minute time
+    } else { //if it has a 30 minute or 45 minute time
 
         $stringTime;
-        $time = $time/100;
-        $time = $time - 0.5;
 
-        if($time > 12) {  //if it is an afternoon class
-        
-        $stringTime = ($time - 12) . ':30';
-        return $stringTime;
-        } else {
+        if($time % 50 == 0) {    //it is a 30 minute
+            $time = $time/100;
 
-        $stringTime = $time . ':30';
-        return $stringTime;
+            $time = $time - 0.5;
+            if($time > 12)
+                $stringTime = ($time - 12) . ':30';
+            else
+                $stringTime = $time . ':30';
+            
+        } else {    //if it is a 45 minute
+            $time = $time/100;
+            $time = $time - 0.75;
+            
+            if($time > 12)
+                $stringTime = ($time - 12) . ':45';
+            else
+                $stringTime = $time . ':45';
         }
-
+        
+        return $stringTime;
     }
 }
 
