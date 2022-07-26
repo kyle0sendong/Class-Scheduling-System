@@ -36,7 +36,7 @@ try {
 
             //if new entry
             if(isset($_POST['newEntry'])) {
-
+                $parameters['workload'] = 0;
                 insert($pdo, 'teacher', $parameters);
                 $last = $pdo->lastInsertId();   //update adviser table
                 updateAdviser($pdo, $last, $teachAdvising);

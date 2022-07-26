@@ -10,7 +10,8 @@ try {
         $parameters = [
             'grade' => $_POST['grade'],
             'section' => $_POST['section'],
-            'adviser_id' => $_POST['adviser']
+            'adviser_id' => $_POST['adviser'],
+            'workload' => 0,
         ];
 
         insert($pdo, 'grade_level', $parameters);
