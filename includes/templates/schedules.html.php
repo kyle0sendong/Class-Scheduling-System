@@ -107,10 +107,14 @@ for ($i = 7; $i <= 10; $i++) {
         $adviser = retrieveId($pdo, 'teacher', 'id', $row['adviser_id']);
         $grade_section = $row['grade'].$row['section'];
         
+        $workload = 0;
+        if(isset($row['adviser_id']))
+            $workload = $adviser['workload'];
+        
         $output .= '  
                 <tr>
                     <td>'.$row['section'].'</td>
-                    <td>'.$row['workload'].'</td> 
+                    <td>'.$workload.'</td> 
         ';
 
         if(isset($row['adviser_id'])) 
